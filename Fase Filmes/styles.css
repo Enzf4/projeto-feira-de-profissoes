@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Satisfy&display=swap');
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    html{
+        background-color: #222831;
+    }
+
+    #instruc{
+        color: #EEEEEE;
+        margin-left: 25px;
+        margin-top: 25px;
+    }
+
+    @keyframes rainbow {
+    0% { color: red; }
+    14% { color: orange; }
+    28% { color: yellow; }
+    42% { color: rgb(0, 255, 0); }
+    56% { color: rgb(0, 0, 255); }
+    70% { color: rgb(162, 0, 255); }
+    84% { color: rgb(255, 0, 255); }
+    100% { color: red; }
+}
+
+    #desafio{
+        animation: rainbow 3s linear infinite;
+        margin-top: 50px;
+        padding-top: 20px;
+    }
+
+    #pagetitle{
+        color: #EEEEEE;
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    #acerto{
+        color: rgba(88, 251, 76, 0.884);
+        margin-left: 25px;
+        display: none;
+        padding-bottom: 25px;
+    }
+
+    #poster
+    {
+        max-height: 600px;
+        min-height: 100px;
+        float: right;
+    }
+
+    #poster2{
+        max-height: 400px;
+    }
+
+    .posters{
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+
+    .box{
+        display: none;
+        text-align: center;
+        background-color: black;
+
+    }
+
+    .movies{
+        display: none;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .search{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        gap: 6px;
+        top: 20px;
+        margin-bottom: 50px;
+        margin-top: 20px;
+    }
+
+    #query{
+        border-color: #74CBEB;
+        border-style: solid;
+        border-width: 3px;
+        background-color: transparent;
+        border-radius: 50px;
+        color: #EEEEEE;
+        padding: 5px 10px;
+        width: 350px;
+        height: 40px;
+        font-size: 1rem;
+    } 
+
+    #searchBtn{
+        position: absolute;
+        margin-left: 250px;
+        border-style: none;
+        background-color: #74CBEB;
+        border-radius: 0px 50px 50px 0px;
+        color: #EEEEEE;
+        padding: 5px 10px;
+        height: 40px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    #inputSize{
+        border-color: #ffffff15;
+        border-style: solid;
+        border-width: 3px;
+        background-color: transparent;
+        border-radius: 50px;
+        color: #EEEEEE;
+        padding: 5px 10px;
+        width: 100px;
+        height: 40px;
+        font-size: 1rem;
+        margin-top: 23px;
+    }
+
+    .userInput pre{
+        color: #EEEEEE;
+    }
+
+    .userInput{
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        margin-left: -50px;
+        justify-content: center;
+    }
+
+    #bracket{
+        margin-top: 23px;
+    }
