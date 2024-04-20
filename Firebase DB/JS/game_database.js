@@ -75,7 +75,7 @@ const game_database = {};
 
         let game_ref = firebase.database().ref('/games/' + game_id);
 
-        game_ref.onde('child_changed')
+        game_ref.once('child_changed')
         .then(function (snapshot) {
 
             if(snapshot.key == 'board'){
