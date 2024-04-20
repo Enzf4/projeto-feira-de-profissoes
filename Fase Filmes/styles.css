@@ -7,37 +7,35 @@
         font-family: 'Poppins', sans-serif;
     }
 
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus{
+        outline: none;
+    }
+
     html{
-        background-color: #222831;
+        background-color: #111116;
+    }
+
+    body{
+        padding: 0 25%;
     }
 
     #instruc{
         color: #EEEEEE;
-        margin-left: 25px;
-        margin-top: 25px;
+        font-size: larger;
     }
 
-    @keyframes rainbow {
-    0% { color: red; }
-    14% { color: orange; }
-    28% { color: yellow; }
-    42% { color: rgb(0, 255, 0); }
-    56% { color: rgb(0, 0, 255); }
-    70% { color: rgb(162, 0, 255); }
-    84% { color: rgb(255, 0, 255); }
-    100% { color: red; }
-}
-
     #desafio{
-        animation: rainbow 3s linear infinite;
-        margin-top: 50px;
-        padding-top: 20px;
+        color: #EEEEEE;
     }
 
     #pagetitle{
         color: #EEEEEE;
         text-align: center;
-        margin-top: 25px;
+        margin-top: 25%;
+        font-size: 40px;
     }
 
     #acerto{
@@ -49,24 +47,34 @@
 
     #poster
     {
-        max-height: 600px;
+        max-height: 400px;
         min-height: 100px;
-        float: right;
     }
 
     #poster2{
-        max-height: 400px;
+        max-height: 325px;
     }
 
     .posters{
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        box-shadow: #dbf4fd1a 0px 0px 80px 0px;
     }
 
     .box{
         display: none;
         text-align: center;
-        background-color: black;
+        flex-direction: column;
+        gap: 25px;
+        max-width: 500px;
+        min-width: 300px;
 
+        border-style: solid;
+        border-color: #74CBEB;
+        border-radius: 15px;
+        padding: 20px;
+
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: #dbf4fd2e 0px 0px 80px 0px;
     }
 
     .movies{
@@ -74,6 +82,7 @@
         justify-content: center;
         align-items: center;
         gap: 30px;
+        margin-bottom: 50px;
     }
 
     .search{
@@ -91,7 +100,7 @@
         border-style: solid;
         border-width: 3px;
         background-color: transparent;
-        border-radius: 50px;
+        border-radius: 15px;
         color: #EEEEEE;
         padding: 5px 10px;
         width: 350px;
@@ -100,11 +109,12 @@
     } 
 
     #searchBtn{
+        
         position: absolute;
         margin-left: 250px;
         border-style: none;
         background-color: #74CBEB;
-        border-radius: 0px 50px 50px 0px;
+        border-radius: 0px 15px 15px 0px;
         color: #EEEEEE;
         padding: 5px 10px;
         height: 40px;
@@ -117,17 +127,19 @@
         border-style: solid;
         border-width: 3px;
         background-color: transparent;
-        border-radius: 50px;
+        border-radius: 15px;
         color: #EEEEEE;
         padding: 5px 10px;
         width: 100px;
         height: 40px;
         font-size: 1rem;
-        margin-top: 23px;
     }
 
     .userInput pre{
         color: #EEEEEE;
+        line-height: 1px;
+        text-align: start;
+        margin-top: 10px;
     }
 
     .userInput{
