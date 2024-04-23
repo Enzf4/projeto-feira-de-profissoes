@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Satisfy&display=swap');
+
+@keyframes rainbow {
+    0% { color: red; }
+    14% { color: orange; }
+    28% { color: yellow; }
+    42% { color: rgb(0, 255, 0); }
+    56% { color: rgb(0, 0, 255); }
+    70% { color: rgb(162, 0, 255); }
+    84% { color: rgb(255, 0, 255); }
+    100% { color: red; }
+}
+
+:root{
+    --azul-detalhes: #1fcad3;
+    --cor-fundo:#121214;
+    --cor-fonte:aliceblue;
+}
+
+#raimbow{
+    animation: rainbow 3s linear infinite;
+}
+
+html{
+    background-color: var(--cor-fundo);
+}
+
+
+html, body {
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+}
+
+
+#carrinho-compras {
+    border: 2px solid ;
+    border-color: var(--azul-detalhes);
+    width: 350px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+#carrinho-compras p{
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+h1{
+    color: var(--cor-fonte);
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
+
+#mostrar{
+    color:var(--cor-fonte);
+}
+
+#buttonProximo {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20%;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: 2px solid var(--azul-detalhes);
+    color: var(--cor-fonte);
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttonProximo:hover {
+    background-color: #004b69;
+}
+#botao1{
+    border-color: var(--azul-detalhes);
+    border-style: solid;
+    border-width: 3px;
+    background-color: transparent;
+    border-radius: 15px;
+    color: var(--cor-fonte);
+    font-size: 1.3rem;
+    transition: background-color 0.2s ease;
+}
+
+#botao1:hover{
+    background-color: #004b69;
+    cursor: pointer;
+}
+
+.imgpizza {
+    height: 120px;
+}
+
+#pizzaAlinhamento{
+    color: var(--cor-fonte);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pizzaAlinhamento h2{
+    margin-top: 2px;
+}
+
+#botao1{
+    padding: 10px;
+    width: 150px;
+    margin: 5px 0px;
+}
+
+#conserto{
+    color: var(--cor-fonte);
+    border: 2px solid;
+    border-color: var(--azul-detalhes);
+    width: 350px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+strong{
+    color: var(--azul-detalhes);
+}
+
+pre{
+    font-size: 1.5rem;
+    margin: 15px 0px;
+
+}
+h2{
+    color: var(--cor-fonte);
+    margin: 15px 0px;
+}
+
+input{
+    color: var(--cor-fonte);
+    font-size: 1.2rem;
+    border: 2px solid var(--azul-detalhes);
+    background-color: transparent;
+}
+
+#formula{
+    font-size: 1rem;
+    padding: 10px ;
+    width: 180px;
+    height: 10px;
+}
+
+#totalpizza{
+    font-size: 1.2rem;
+}
+
+#erro{
+    color: red;
+    font-size: 1.2rem;
+    display: block;
+}
+
+#aviso1{
+    font-size: 25px;
+}
+
+
+
+
+

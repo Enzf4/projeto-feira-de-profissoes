@@ -1,0 +1,107 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --corfundo: #121214;
+    --azuldetalhes: #1fcad3;
+    --corfonte: aliceblue;
+}
+
+html{
+    background-color: var(--corfundo)
+}
+
+body {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    overflow-x: hidden;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.linha-chegada {
+    display: flex;
+    align-items: center;
+}
+
+.linhachegada{
+    padding: 0px 350px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.chegada{
+    height: 939px;
+}
+
+.centralizarinput{
+    padding: 0px 250px;
+}
+
+.carrinho {
+    margin-left: 800px;
+    height: 100px;
+    position: absolute;
+    transition: margin-left 0.5s ease;
+}
+
+#correto{
+    color: rgba(88, 251, 76, 0.884) ;
+    font-size: 50px;
+    display: none;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+#menos{
+    color: var(--corfonte);
+    font-size: 50px;
+    display: none;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+#userInput{
+    border-color: var(--azuldetalhes);
+    border-style: solid;
+    background-color: transparent;
+    border-radius: 20px;
+    color: #EEEEEE;
+    padding: 5px 10px;
+    width: 45px;
+    height: 10px;
+    font-size: 1rem;
+}
+
+p{
+    font-size: 2rem;
+    color: var(--azuldetalhes);
+}
+
+pre{
+    font-size: 1.5rem;
+    color: var(--corfonte);
+}
+
+#buttonProximo{
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+    margin: 80px 150px;
+    border: 2px solid var(--azuldetalhes);
+    color: var(--corfonte);
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    border-radius: 15px;
+}
+
+#buttonProximo:hover{
+    background-color: #004b69;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste alinhamentos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" async></script>
+</head>
+<body>
+
+    <div class="centralizarinput">
+        <p>Faça com que o carrinho cruze a linha de chegada</p>
+    <pre>
+    .carrinho{
+        margin-left: <input id="userInput" type="text" required minlength="4" maxlength="10" size="5" oninput="moverCarrinho(this.value)"/> px;}
+    </pre>
+
+    <div>
+        <h2 id="correto">Correto! &#127881;</h2>
+    </div>
+
+    <button id="buttonProximo">Próximo ></button>
+
+    <div>
+        <h2 id="menos">Um pouco menos...</h2>
+    </div>
+
+    </div>
+
+    <div class="linha-chegada">
+        <div class="linhachegada">
+            <img class="chegada" src="images.png" alt="final">
+        </div>
+    </div>
+
+    <img class="carrinho" id="carrinho" src="carrinho.png" alt="">
+
+
+
+</body>
+</html>

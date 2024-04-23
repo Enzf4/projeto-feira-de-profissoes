@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase Editor</title>
+</head>
+<body>
+    <div id="main">
+
+        <div id="container">
+            <!-- Título --> 
+            <h1>Fase ? - Alinhamento</h1>
+
+            <!-- Imagem --> 
+            <img src="cssfoto.png" alt="foto css">
+
+            <!--Descrição --> 
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur, dolorem odio voluptate quam eveniet tenetur perferendis officia hic tempore delectus nostrum, vel perspiciatis. Modi tempore id ducimus consectetur atque iusto?</p>
+
+            <!-- Botão --> 
+            <a href="carrinho.html"><button>Iniciar</button></a>
+        </div>
+    </div>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Satisfy&display=swap');
+
+        *{
+            color: aliceblue;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html{
+            background-color: #111116;
+        }
+
+        #container{
+            display: flex;
+            flex-direction: column;
+            border-style: solid;
+            justify-content: center;
+            align-items: center;
+            width: 450px;
+            padding: 1rem 2rem;
+            text-align: center;
+            gap: 1rem;
+            border-radius: 15px;
+            border-color: #1fcad3;
+            box-shadow: #dbf4fd2e 0px 0px 80px 0px;
+        }
+
+        #main{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        button{
+            background-color: transparent;
+            border-style: solid;
+            padding: 0.5rem 1rem;
+            border: 2px solid #1fcad3;
+            border-radius: 10px;
+            color: aliceblue;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        img{
+            width: 300px;
+            border-radius: 15px;
+        }
+
+    </style>
+</body>
+</html>
