@@ -15,7 +15,7 @@
     }
 
     html{
-        background-color: #111116;
+        background-color: #121214;
     }
 
     body{
@@ -44,6 +44,23 @@
         display: none;
         padding-bottom: 25px;
     }
+    
+    #continuar{
+        background-color: transparent;
+        border-style: solid;
+        padding: 0.5rem 1rem;
+        border: 2px solid #1fcad3;
+        border-radius: 10px;
+        color: aliceblue;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+        margin: auto;
+    }
+
+    a{
+        text-decoration: none;
+    }
 
     #poster
     {
@@ -68,7 +85,7 @@
         min-width: 300px;
 
         border-style: solid;
-        border-color: #74CBEB;
+        border-color: #1fcad3;
         border-radius: 15px;
         padding: 20px;
 
@@ -96,7 +113,7 @@
     }
 
     #query{
-        border-color: #74CBEB;
+        border-color: #1fcad3;
         border-style: solid;
         border-width: 3px;
         background-color: transparent;
@@ -113,7 +130,7 @@
         position: absolute;
         margin-left: 250px;
         border-style: none;
-        background-color: #74CBEB;
+        background-color: #1fcad3;
         border-radius: 0px 15px 15px 0px;
         color: #EEEEEE;
         padding: 5px 10px;

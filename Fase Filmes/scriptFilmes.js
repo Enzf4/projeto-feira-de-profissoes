@@ -5,7 +5,7 @@ $('#searchBtn').click(function()
             let query=$('#query').val();
 
             const palavroes = [
-                "Palavrão", "Merda", "Caralho", "Bosta", "Puta", "Buceta", "Foda", "Piroca", "Putaquepariu", "Filho da puta", "Vagem", "Putana", "Putão", "Putaçudo", "Porra", "Caralho", "Arrombado", "Buceta", "Cuzão", "Pau", "Cocô", "Cu", "Foder", "Fuder", "Vadia", "Viado", "Vagabundo", "Desgraça", "Idiota", "Estúpido", "Inútil", "Estuprador", "Prostituta", "Cretino", "Degenerado", "Imbecil", "Parvo", "Besta", "Estupidez", "Estupidez", "Tosco", "Cachorro", "Cabra", "Estrume", "Excremento", "Palhaço", "Desgraçado", "Desgraçada", "Maldito", "Maldita", "Mijar", "Mijo", "Mijão", "Mijona", "Piranha", "Peste", "Piranho", "Piranha", "Puto", "Merdinha", "Bostinha", "Caralhinho", "Veadinho", "Gayzinho", "Sapatão", "Cretina", "Machorra", "Lesbica", "Gordo", "Gorda", "Feia", "Feio", "Burro", "Burra", "Feioso", "Cheiroso", "Corno", "Cornudo", "Chifrudo", "Burro", "Burra", "Pamonha", "Pamonha", "Feio", "Burro", "Pamonha"
+                "Palavrão", "Merda", "Penis", "Caralho", "Bosta", "Puta", "Buceta", "Foda", "Piroca", "Putaquepariu", "Filho da puta", "Vagem", "Putana", "Putão", "Putaçudo", "Porra", "Caralho", "Arrombado", "Buceta", "Cuzão", "Pau", "Cocô", "Cu", "Foder", "Fuder", "Vadia", "Viado", "Vagabundo", "Desgraça", "Idiota", "Estúpido", "Inútil", "Estuprador", "Prostituta", "Cretino", "Degenerado", "Imbecil", "Parvo", "Besta", "Estupidez", "Estupidez", "Tosco", "Cachorro", "Cabra", "Estrume", "Excremento", "Palhaço", "Desgraçado", "Desgraçada", "Maldito", "Maldita", "Mijar", "Mijo", "Mijão", "Mijona", "Piranha", "Peste", "Piranho", "Piranha", "Puto", "Merdinha", "Bostinha", "Caralhinho", "Veadinho", "Gayzinho", "Sapatão", "Cretina", "Machorra", "Lesbica", "Gordo", "Gorda", "Feia", "Feio", "Burro", "Burra", "Feioso", "Cheiroso", "Corno", "Cornudo", "Chifrudo", "Burro", "Burra", "Pamonha", "Pamonha", "Feio", "Burro", "Pamonha"
             ];
 
             const queryCensurada = palavroes.some(palavrao => query.includes(palavrao.toLowerCase()));
@@ -30,6 +30,7 @@ $('#searchBtn').click(function()
         const acerto = document.getElementById("acerto")
         const poster = document.getElementById("poster")
         const score = document.getElementById("scoreDisplay")
+        const continuar = document.getElementById("continuar")
 
         let timer;
         let pontos = 500
@@ -48,6 +49,7 @@ $('#searchBtn').click(function()
 
             if(inputSize.value == 325){
                 acerto.style.display = "block";
+                continuar.style.display = "flex";
                 size.disabled = true;
                 if(pontos - tempo > 0){
                     score.innerText = pontos - tempo;

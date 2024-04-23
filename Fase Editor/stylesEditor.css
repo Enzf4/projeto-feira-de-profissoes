@@ -6,12 +6,54 @@
 
     img{
         height: 300px;
+        border-radius: 15px;
+        border: 2px solid black;
+        margin-left: 5px;
+    }
+
+    #continuar{
+        background-color: transparent;
+        border-style: solid;
+        padding: 0.5rem 1rem;
+        border: 2px solid #1fcad3;
+        border-radius: 10px;
+        color: aliceblue;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+    }
+    
+    a{
+        text-decoration: none;
     }
 
     #inputs{
         display: flex;
         flex-direction: column;
-
-        width: 250px;
+        width: 700px;
         gap: 15px;
+    }
+
+    input{
+        border-color: #ffffff15;
+        border-style: solid;
+        border-width: 3px;
+        background-color: transparent;
+        border-radius: 10px;
+        color: #EEEEEE;
+        padding: 5px 10px;
+        width: 400px;
+        height: 25px;
+        font-size: 1rem;
+    }
+
+    body{
+        background-color: #121214;
+        color: aliceblue;
+    }
+
+    #pagina{
+        border-bottom: 1px solid #1e1d20;
+        background-color: aliceblue;
+        color: black;
     }
