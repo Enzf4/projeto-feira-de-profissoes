@@ -44,6 +44,7 @@ html, body {
     text-align: center;
     border-radius: 15px;
     margin-bottom: 15px;
+    box-shadow: #dbf4fd2e 0px 0px 80px 0px;
 }
 
 #carrinho-compras p{
@@ -128,6 +129,7 @@ h1{
     width: 350px;
     text-align: center;
     border-radius: 15px;
+    box-shadow: #dbf4fd2e 0px 0px 60px 0px;
 }
 
 strong{
