@@ -9,42 +9,41 @@
 </head>
 <body>
     <div id="shadow">
-    <div id="carrinho-compras">
-        <h1>Carrinho</h1>
+        <div id="carrinho-compras">
+            <h1>Carrinho</h1>
 
-        <div id="pizzaAlinhamento">
-            <img class="imgpizza" src="pizza.png" alt="pizza"> <p>R$40</p>
+            <div id="pizzaAlinhamento">
+                <img class="imgpizza" src="pizza.png" alt="pizza"> <p>R$40</p>
+            </div>
+
+            <div id="pizzaAlinhamento">
+                <img class="imgpizza" src="pizza.png" alt="pizza"> <p>R$35</p>
+            </div>
+
+            <div id="pizzaAlinhamento">
+                <img class="imgpizza" src="pizza.png" alt="pizza"> <p>R$45</p>
+            </div>
+
+            <input id="botao1" type="button" value="Finalizar" onclick="finalizar()">
+
+            <h2 id="mostrar">Total: </h2>
+
+            <h2 id="erro"></h2>
         </div>
 
-        <div id="pizzaAlinhamento">
-            <img class="imgpizza" src="pizza.png" alt="pizza"> <p>R$35</p>
-        </div>
-
-        <div id="pizzaAlinhamento">
-            <img class="imgpizza" src="pizza.png" alt="pizza"> <p>R$45</p>
-        </div>
-
-        <input id="botao1" type="button" value="Finalizar" onclick="finalizar()">
-
-        <h2 id="mostrar">Total: </h2>
-
-        <h2 id="erro"></h2>
-    </div>
-
-    <button id="buttonProximo">Próximo ></button>
-    
-    <div id="conserto">
-        <h1 id="raimbow">Conserte o código</h1>
-        <pre>
+        <button id="buttonProximo">Próximo ></button>
+        
+        <div id="conserto">
+            <h1 id="raimbow">Conserte o código</h1>
+            <pre>
 <strong>var</strong> pizza1 = <input id="pizza1" type="text" size="1">;
 <strong>var</strong> pizza2 = <input id="pizza2" type="text" size="1">;
 <strong>var</strong> pizza3 = <input id="pizza3" type="text" size="1">;
-        
-<strong id="totalpizza">totalPizza=</strong><input id="formula" type="text" size="20">;
-</pre>
 
-<h2 id="aviso1">faça o cálculo das 3 pizzas</h2>
-    </div>
+<strong >var</strong> totalPizza=<input id="formula" type="text" size="20">;
+</pre>
+    <h2 id="aviso1">faça o cálculo das 3 variáveis</h2>
+        </div>
 </div>
 </body>
 </html>
