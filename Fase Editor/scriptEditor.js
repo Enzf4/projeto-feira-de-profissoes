@@ -5,34 +5,48 @@ let inputdescimg = document.getElementById("inputDescImg");
 let inputimg = document.getElementById("inputImg");
 let continuarBtn = document.getElementById("continuar");
 
-let h1 = document.getElementById("h1");
-let h2 = document.getElementById("h2");
-let desc = document.getElementById("desc");
-let descImg = document.getElementById("descimg");
-let img = document.getElementById("img");
+let h1 = document.querySelectorAll(".h1");
+let h2 = document.querySelectorAll(".h2");
+let desc = document.querySelectorAll(".desc");
+let descImg = document.querySelectorAll(".descimg");
+let img = document.querySelectorAll(".img");
+let img2 = document.querySelectorAll(".img2");
 
 function atualizarh1() {
-    h1.innerText = inputh1.value;
+    h1.forEach(function(element) {
+        element.innerText = inputh1.value;
+    });
     verificarCampos();
 }
 
 function atualizarh2() {
-    h2.innerText = inputh2.value;
+    h2.forEach(function(element) {
+        element.innerText = inputh2.value;
+    });
     verificarCampos();
 }
 
 function atualizardesc() {
-    desc.innerText = inputdesc.value;
+    desc.forEach(function(element) {
+        element.innerText = inputdesc.value;
+    });
     verificarCampos();
 }
 
 function atualizardescimg() {
-    descImg.innerText = inputdescimg.value;
+    descImg.forEach(function(element) {
+        element.innerText = inputdescimg.value;
+    });
     verificarCampos();
 }
 
 function atualizarimg() {
-    img.src = inputimg.value;
+    img.forEach(function(element) {
+        element.src = inputimg.value;
+    });
+    img2.forEach(function(element) {
+        element.innerText = inputimg.value;
+    });
     verificarCampos();
 }
 
