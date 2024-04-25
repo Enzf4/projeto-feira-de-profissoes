@@ -55,7 +55,8 @@ usuarioInput.addEventListener("input", function() {
     }
 });
 
-function readUserData() {
+
+window.addEventListener("load", function() {
     var var_lista = document.getElementById("div_lista");
     var dados = "";
     var jogadores = [];
@@ -78,7 +79,9 @@ function readUserData() {
 
         var_lista.innerHTML = dados;
     });
-}
+});
+
+
 
 function update_game(game_id, pontos) {
     if (!game_id) return { success: false, messagem: 'Invalid game'};
