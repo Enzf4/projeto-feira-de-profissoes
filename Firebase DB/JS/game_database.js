@@ -1,57 +1,76 @@
 const game_database = {};
+const usuarioBtn = document.getElementById("usuarioBtn");
 
-(function () {
-    let game_id = false;
+    // var nameRef = firebase.database().ref('Placar/');
+    // nameRef.on('value', (snapshot) => {
+    // console.log(snapshot.val())
+    // });
 
-    function new_game(player1, board) {
-        const game_data = {
-            player1: player1,
-            board: board,
-            gameover: false,
-            createdat: firebase.database.ServerValue.TIMESTAMP,
-        };
 
-        if (!game_id) {
-            game_id = firebase.database().ref().child('games').push().key;
-        }
+    function gravarUsuario(game_id, usuario, pontos) 
+    {
+        var ref = firebase.database().ref('Placar/');
 
-        let updates = {}
-            updates['/games/' + game_id] = game_data;
-        
-        let game_ref = firebase.database().ref();
-        
-        game_ref.update(updates)
-            .then(function () {
-                return { success: true, message: 'Game created'};
-            })
-            .catch(function (error){
-                return { success: false, message: `Creation failed: ${error.message}`};
-            })
-     }
+        // Verifica se o nome já existe
+        ref.orderByChild('nome').equalTo(usuario).once('value', snapshot => {
+            if (snapshot.exists()) {
+                alert('O nome já foi escolhido. Por favor, escolha outro nome.');
+            } else {
+                // Grava os dados se o nome não existir
+                ref.child(game_id).set({
+                    nome: usuario,
+                    pontos: pontos,
+                });
+            }
+        });
+    };
 
-    function remove_game() {
+    async function onClick()
+    {
+        game_id = firebase.database().ref().child('placar').push().key;
+        let usuario=$('#usuario').val();
+        gravarUsuario(game_id, usuario, 0);
+    }
+    usuarioBtn.addEventListener("click", onClick);
+
+    function readUserData() 
+    {
+        var var_lista = document.getElementById("div_lista");
+
+        var dados = ""
+
+        var db = firebaseRef = firebase.database().ref().child("Placar");
+        var jogadores = [];
+        db.on('child_added', function(snapshot) {
+            var adicionado = snapshot.val();
+            jogadores.push(adicionado);
+        });
+
+        // Aguarda todos os dados serem carregados
+        db.once('value', function() {
+            // Ordena os jogadores pelo campo 'pontos' em ordem decrescente
+            jogadores.sort(function(a, b) {
+                return b.pontos - a.pontos;
+            });
+
+            // Cria a tabela com os jogadores ordenados
+            for (var i = 0; i < jogadores.length; i++) {
+                dados += "<table>" + "<tr><td>" + jogadores[i].nome + ": " + jogadores[i].pontos + "</td></tr>";
+            }
+
+            var_lista.innerHTML = dados;
+        });
+    };
+
+    function update_game(game_id, pontos) 
+    {
         if (!game_id) return { success: false, messagem: 'Invalid game'};
 
-        let game_ref = firebase.database().ref('/games/' + game_id);
 
-        game_ref.remove()
-            .then(function () {
-                return { success: true, message: 'Game created'};
-            })
-            .catch(function (error){
-                return { success: false, message: `Creation failed: ${error.message}`};
-            })
-     }
-
-    function update_game(board) {
-        if (!game_id) return { success: false, messagem: 'Invalid game'};
-
-
-        let game_ref = firebase.database().ref('/games/' + game_id);
+        let game_ref = firebase.database().ref('/Placar/' + game_id);
 
         let updates = {};
-        updates['/board'] = board;
-        updates['/lastupdate'] = firebase.database.ServerValue.TIMESTAMP;
+        updates['pontos'] += pontos;
 
 
         game_ref.update(updates)
@@ -63,43 +82,5 @@ const game_database = {};
         })
     }
 
-    function reset_game() { 
-        if (!game_id) return { success: false, messagem: 'Invalid game'};
-
-        game_id = false;
-        return { success: true, message: 'Game reset' };
-    }
-
-    async function listen_game() {
-        if (!game_id) return { success: false, message: 'Invalid game'}
-
-        let game_ref = firebase.database().ref('/games/' + game_id);
-
-        game_ref.once('child_changed')
-        .then(function (snapshot) {
-
-            if(snapshot.key == 'board'){
-                console.log('Board changed', snapshot.val());
-                return { success: true, message: 'Board update', data: snapshot.val()}
-                
-            }else if (snapshot.key == 'gameover'){
-                console.log('Game over', snapshot.val());
-                return { success: true, message: 'Game Over', data: snapshot.val()}
-            }
-
-        })
-        .catch(function (error){
-            return { success: false, message: `Invalid data: ${error.message}`};
-        })
-    }
-
-
-    game_database.new = new_game;
-    game_database.remove = remove_game;
+    game_database.read = readUserData;
     game_database.update = update_game;
-    game_database.reset = reset_game;
-    game_database.listen = listen_game;
-    
-
-
-})()

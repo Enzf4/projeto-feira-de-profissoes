@@ -13,5 +13,5 @@ document.getElementById('about-button').addEventListener('click', function() {
 });
 
 document.getElementById("button").addEventListener("click", function() {
-    window.location.href = "../Fase Filmes/InterFilme.html";
+    window.location.href = "../Firebase DB/index.html";
 });

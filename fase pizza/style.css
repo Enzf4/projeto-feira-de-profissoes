@@ -11,6 +11,31 @@
     100% { color: red; }
 }
 
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #22212b;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3d3c4a;
+}
+
+input,
+textarea,
+button,
+select,
+a{
+    -webkit-tap-highlight-color: transparent;
+}
+
 :root{
     --azul-detalhes: #1fcad3;
     --cor-fundo:#121214;

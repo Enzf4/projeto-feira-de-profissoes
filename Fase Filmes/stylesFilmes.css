@@ -5,6 +5,32 @@
         padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
+        transition: all 0.3s ease;
+    }
+
+    ::-webkit-scrollbar{
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #000000;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #22212b;
+        border-radius: 2px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #3d3c4a;
+    }
+    
+    input,
+    textarea,
+    button,
+    select,
+    a{
+        -webkit-tap-highlight-color: transparent;
     }
 
     input:focus,

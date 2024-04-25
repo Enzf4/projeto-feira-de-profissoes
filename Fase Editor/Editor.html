@@ -6,38 +6,94 @@
     <title>Fase Editor</title>
     <link rel="stylesheet" href="stylesEditor.css">
     <script src="scriptEditor.js" async></script>
+    <style>
+        .tag {
+            color: rgb(90, 126, 242); /* Cor para os caracteres < e > */
+        }
+        
+        .tag-content {
+            color: rgb(255, 255, 255); /* Cor para o conteúdo fictício dentro das tags */
+        }
+
+        .attribute {
+            color: rgb(211, 133, 253); /* Cor para os atributos id e src */
+        }
+    </style>
 </head> 
 <body>
-    <h1>Edite a página HTML abaixo!</h1>
-    <div id="pagina">
-
-        <h1 id="h1">Título da Sua Primeira Página</h1>
-        <p id="desc">Descrição da página</p>
-        <h2 id="h2">Título da Imagem</h2>
-        <img id='img' src="https://st.depositphotos.com/2398521/2608/i/450/depositphotos_26089317-stock-photo-cute-small-dog.jpg" alt="">
-        <p id="descimg">Descrição da Imagem</p>
+    <h1 id="titulo">Edite a página HTML abaixo!</h1>
+    <div class="fundo">
+        <div id="pagina">
+            <!-- Tag h1: Define o título principal da página -->
+            <h1 class="h1">Título da Sua Primeira Página</h1>
+            <!-- Tag p: Define um parágrafo de texto -->
+            <p class="desc">Descrição da página</p>
+            <!-- Tag h2: Define um título secundário -->
+            <h2 class="h2">Título da Imagem</h2>
+            <!-- Tag img: Define uma imagem -->
+            <img class='img' src="https://st.depositphotos.com/2398521/2608/i/450/depositphotos_26089317-stock-photo-cute-small-dog.jpg" alt="">
+            <!-- Tag p: Define um parágrafo de texto -->
+            <p class="descimg">Descrição da Imagem</p>
+        </div>
     </div>
-    <div id="inputs">
-        <br>
-        h1 <br>
-        (cabeçalho de primeiro nível)
-        <input id="inputH1" type="text">
-        h2 <br>
-        (cabeçalho de segundo nível)
-        <input id="inputH2" type="text">
-        p id="descricao" <br>
-        (parágrafo da descrição)
-        <input id="inputDesc" type="text">
-        p id="descricao_imagem" <br>
-        (parágrafo da descrição da imagem)
-        <input id="inputDescImg" type="text">
-        img src= <br>
-        (link da imagem)
-        <input id="inputImg" type="text">
-        <br>
-        <a href="../fase carrinho/InterCarrinho.html"><button id="continuar">Continuar</button></a>
-        <br>
+    
+    <div class="container">
+        <div id="inputs">
+            <br>
+            <!-- Input para título h1 -->
+            <h1 id="title-input">Inputs</h1>
+            <h1 class="h">
+                <!-- Descrição da tag h1 -->
+                <span>Título de maior importância da página (h1)</span><br>
+                <input id="inputH1" type="text">
+            </h1>
+            <!-- Input para título h2 -->
+            <h1 class="h">
+                <!-- Descrição da tag h2 -->
+                <span>Título de importância secundária (h2)</span><br>
+                <input id="inputH2" type="text">
+            </h1>
+            <!-- Input para parágrafo de descrição -->
+            <h1 class="h">
+                <!-- Descrição da tag p (parágrafo) -->
+                <span>Parágrafo de descrição (p)</span><br>
+                <input id="inputDesc" type="text">
+            </h1>
+            <!-- Input para parágrafo de descrição da imagem -->
+            <h1 class="h">
+                <!-- Descrição da tag p (parágrafo) -->
+                <span>Descrição da imagem (p)</span><br>
+                <input id="inputDescImg" type="text">
+            </h1 class="h">
+            <!-- Input para link da imagem -->
+            <h1 class="h">
+                <!-- Descrição da tag img -->
+                <span>Link da imagem (img src=)</span><br>
+                <input id="inputImg" type="text">
+            </h1 class="h">
+            <br>
+            <a href="../fase carrinho/InterCarrinho.html"><button id="continuar">Continuar</button></a>
+            <br>
+        </div>
 
+        <div class="direita">
+            <br>
+            <h1 id="codigo">Código</h1>
+            <!-- Input para título h1 -->
+            <h1>&lt;<span class="tag">h1</span>&gt; <span class="tag-content h1"></span> &lt;/<span class="tag">h1</span>&gt;</h1>
+            <!-- Input para título h2 -->
+            <h1>&lt;<span class="tag">h2</span>&gt; <span class="tag-content h2"></span> &lt;/<span class="tag">h2</span>&gt;</h1>
+            <!-- Input para parágrafo de descrição -->
+            <h1>&lt;<span class="tag">p</span> <span class="attribute">id="descricao"</span>&gt; <span class="tag-content desc"></span> &lt;/<span class="tag">p</span>&gt;</h1>
+            <!-- Input para parágrafo de descrição da imagem -->
+            <h1>&lt;<span class="tag">p</span> <span class="attribute">id="descricao_imagem"</span>&gt; <span class="tag-content descimg"></span> &lt;/<span class="tag">p</span>&gt;</h1>
+            <!-- Input para link da imagem -->
+            <h1>&lt;<span class="tag">img</span> <span class="attribute">src=" "</span>&gt;</h1>
+            <br>
+            <a href="../fase carrinho/intermediaria.html"><button id="continuar">Continuar</button></a>
+            <br>
+        </div>
     </div>
+    
 </body>
 </html>

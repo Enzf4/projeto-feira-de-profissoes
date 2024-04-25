@@ -2,10 +2,10 @@ $('#searchBtn').click(function()
         {
             startTimer();
 
-            let query=$('#query').val();
+            let query=$('#query').val().toLowerCase();
 
             const palavroes = [
-                "Palavrão", "Merda", "Penis", "Caralho", "Bosta", "Puta", "Buceta", "Foda", "Piroca", "Putaquepariu", "Filho da puta", "Vagem", "Putana", "Putão", "Putaçudo", "Porra", "Caralho", "Arrombado", "Buceta", "Cuzão", "Pau", "Cocô", "Cu", "Foder", "Fuder", "Vadia", "Viado", "Vagabundo", "Desgraça", "Idiota", "Estúpido", "Inútil", "Estuprador", "Prostituta", "Cretino", "Degenerado", "Imbecil", "Parvo", "Besta", "Estupidez", "Estupidez", "Tosco", "Cachorro", "Cabra", "Estrume", "Excremento", "Palhaço", "Desgraçado", "Desgraçada", "Maldito", "Maldita", "Mijar", "Mijo", "Mijão", "Mijona", "Piranha", "Peste", "Piranho", "Piranha", "Puto", "Merdinha", "Bostinha", "Caralhinho", "Veadinho", "Gayzinho", "Sapatão", "Cretina", "Machorra", "Lesbica", "Gordo", "Gorda", "Feia", "Feio", "Burro", "Burra", "Feioso", "Cheiroso", "Corno", "Cornudo", "Chifrudo", "Burro", "Burra", "Pamonha", "Pamonha", "Feio", "Burro", "Pamonha"
+                "Palavrão","Porno", "Sexo", "Merda", "Penis", "Caralho", "Bosta", "Puta", "Buceta", "Foda", "Piroca", "Putaquepariu", "Filho da puta", "Vagem", "Putana", "Putão", "Putaçudo", "Porra", "Caralho", "Arrombado", "Buceta", "Pau", "Cocô", "Foder", "Fuder", "Vadia", "Viado", "Idiota", "Estúpido", "Inútil", "Estuprador", "Prostituta", "Cretino", "Degenerado", "Imbecil", "Parvo", "Besta", "Estupidez", "Estupidez", "Tosco", "Cachorro", "Cabra", "Estrume", "Excremento", "Palhaço", "Desgraçado", "Desgraçada", "Maldito", "Maldita", "Mijar", "Mijo", "Mijão", "Mijona", "Peste", "Piranho", "Puto"
             ];
 
             const queryCensurada = palavroes.some(palavrao => query.includes(palavrao.toLowerCase()));
@@ -21,10 +21,11 @@ $('#searchBtn').click(function()
             $('.box').css("display", "flex");
             $('#pagetitle').css("margin-top", "25px");
             $('#poster').attr("src", "https://image.tmdb.org/t/p/w500"+data.results[0].poster_path)
-            $('#poster2').attr("src", "https://image.tmdb.org/t/p/w500"+data.results[0].poster_path)
-        })
-
-        })
+            $.getJSON("https://api.themoviedb.org/3/search/movie?api_key=3349c6aa066a33c14a64384200f8c190&query=A Rede Social&include_adult=false&language=en-US&page=1", function(data2) {
+            $('#poster2').attr("src", "https://image.tmdb.org/t/p/w500" + data2.results[0].poster_path);
+        });
+    });
+});
 
         const size = document.getElementById("inputSize")
         const acerto = document.getElementById("acerto")
