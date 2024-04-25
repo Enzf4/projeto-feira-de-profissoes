@@ -1,15 +1,10 @@
 const game_database = {};
-let userId = '';
-let banco = [];
-let i = 0;
-
 const usuarioBtn = document.getElementById("usuarioBtn");
 
-    var nameRef = firebase.database().ref('Placar/');
-    nameRef.on('value', (snapshot) => {
-    console.log(snapshot.val())
-    banco = snapshot.val()
-    });
+    // var nameRef = firebase.database().ref('Placar/');
+    // nameRef.on('value', (snapshot) => {
+    // console.log(snapshot.val())
+    // });
 
 
     function gravarUsuario(game_id, usuario, pontos) 
@@ -30,12 +25,13 @@ const usuarioBtn = document.getElementById("usuarioBtn");
         });
     };
 
-    function onClick()
+    async function onClick()
     {
         game_id = firebase.database().ref().child('placar').push().key;
         let usuario=$('#usuario').val();
         gravarUsuario(game_id, usuario, 0);
     }
+    usuarioBtn.addEventListener("click", onClick);
 
     function readUserData() 
     {
@@ -74,7 +70,7 @@ const usuarioBtn = document.getElementById("usuarioBtn");
         let game_ref = firebase.database().ref('/Placar/' + game_id);
 
         let updates = {};
-        updates['pontos'] = pontos;
+        updates['pontos'] += pontos;
 
 
         game_ref.update(updates)
@@ -88,4 +84,3 @@ const usuarioBtn = document.getElementById("usuarioBtn");
 
     game_database.read = readUserData;
     game_database.update = update_game;
-    usuarioBtn.addEventListener("click", onClick);
