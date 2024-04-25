@@ -27,49 +27,42 @@ $('#searchBtn').click(function()
     });
 });
 
-        const size = document.getElementById("inputSize")
-        const acerto = document.getElementById("acerto")
-        const poster = document.getElementById("poster")
-        const score = document.getElementById("scoreDisplay")
-        const continuar = document.getElementById("continuar")
+const size = document.getElementById("inputSize");
+const acerto = document.getElementById("acerto");
+const poster = document.getElementById("poster");
+const score = document.getElementById("scoreDisplay");
+const continuar = document.getElementById("continuar");
 
-        let timer;
-        let pontos = 500
-        let tempo = 0;
+let timer;
+let pontos = 500;
+let tempo = 0;
 
-        function startTimer() {
-            
-            timer = setInterval(function() {
-                tempo++;
-                console.log("Tempo decorrido: " + tempo);
-            }, 100);
+function startTimer() {
+    timer = setInterval(function() {
+        tempo++;
+        console.log("Tempo decorrido: " + tempo);
+    }, 200);
+}
+
+function updatePoster() {
+    poster.style.height = inputSize.value + "px";
+
+    if (inputSize.value == 325) {
+        acerto.style.display = "block";
+        continuar.style.display = "flex";
+        size.disabled = true;
+        const pontuacaoFinal = Math.max(pontos - tempo, 0);
+        score.innerText = pontuacaoFinal;
+        clearTimeout(timer);
+    }
+}
+
+size.addEventListener('input', updatePoster);
+
+if (query != "" || query != null) {
+    $('#query').keypress(function(event) {
+        if (event.keyCode === 13) {
+            $('#searchBtn').click();
         }
-        
-        function updatePoster() {
-            poster.style.height = inputSize.value + "px";
-
-            if(inputSize.value == 325){
-                acerto.style.display = "block";
-                continuar.style.display = "flex";
-                size.disabled = true;
-                if(pontos - tempo > 0){
-                    score.innerText = pontos - tempo;
-                }else{
-                    score.innerText = 0;
-                }
-                
-                
-                clearTimeout(timer);
-
-            }
-        };
-        size.addEventListener('input', updatePoster);
-
-        if(query != "" || query != null){
-            $('#query').keypress(function(event) {
-                if (event.keyCode === 13){ 
-                    $('#searchBtn').click();  
-                }
-            });
-        }
-        
+    });
+}
