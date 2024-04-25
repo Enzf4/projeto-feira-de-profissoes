@@ -5,6 +5,9 @@ let inputdescimg = document.getElementById("inputDescImg");
 let inputimg = document.getElementById("inputImg");
 let continuarBtn = document.getElementById("continuar");
 
+// Seleciona o elemento HTML que exibirá o link da imagem como uma string
+let imgSrcElement = document.getElementById("imgSrc");
+
 let h1 = document.querySelectorAll(".h1");
 let h2 = document.querySelectorAll(".h2");
 let desc = document.querySelectorAll(".desc");
@@ -41,12 +44,15 @@ function atualizardescimg() {
 }
 
 function atualizarimg() {
+    let inputImgValue = inputimg.value;
+
+    // Atualiza o texto do elemento com o valor inserido pelo usuário  
+    imgSrcElement.innerText = `src="${inputImgValue}"`;
+
     img.forEach(function(element) {
-        element.src = inputimg.value;
+        element.src = inputImgValue;
     });
-    img2.forEach(function(element) {
-        element.innerText = inputimg.value;
-    });
+
     verificarCampos();
 }
 

@@ -4,6 +4,10 @@ let pizza3Input = document.getElementById("pizza3");
 let formulaInput = document.getElementById("formula")
 const mostrar = document.getElementById("mostrar");
 
+document.addEventListener("DOMContentLoaded", function() {
+    startTimer();
+});
+
 function finalizar() {
     let pizza1 = parseFloat(pizza1Input.value);
     let pizza2 = parseFloat(pizza2Input.value);
@@ -30,9 +34,26 @@ function finalizar() {
         formulaInput.disabled = true;
         botao1.disabled = true;
         buttonProximo.style.display = "flex";
-        aviso1.style.color = "rgba(88, 251, 76, 0.884)"
-        aviso1.style.fontSize = "45px";
-        aviso1.innerText = "Acertou !!"
+        aviso1.style.display = "none";
+        correto.style.display = "block";
+        if(pontos - tempo > 0){
+            score.innerText = pontos - tempo;
+        }else{
+            score.innerText = 0;
+        }
     }
 }
+
+
+const score = document.getElementById("scoreDisplay")
+
+let timer;
+let pontos = 500;
+let tempo = 0;
+
+function startTimer() {
+    timer = setInterval(function() {
+        tempo++;
+        console.log("Tempo decorrido: " + tempo);
+    }, 200);}
 

@@ -147,7 +147,12 @@ h1{
     margin-top: 2px;
 }
 
-
+#correto{
+    color: rgba(88, 251, 76, 0.884) ;
+    font-size: 30px;
+    display: none;
+    justify-content: center;
+}
 
 #conserto{
     color: var(--cor-fonte);
