@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function() {
+    startTimer();
+});
+
 function moverCarrinho(valor) {
     const carrinho = document.getElementById('carrinho');
     const valorNumerico = parseFloat(valor); // Converte o valor para número
@@ -11,6 +15,11 @@ function moverCarrinho(valor) {
         menos.style.display = "none"
         userInput.disabled = true;
         buttonProximo.style.display = "flex";
+        if(pontos - tempo > 0){
+            score.innerText = pontos - tempo;
+        }else{
+            score.innerText = 0;
+        }
     }
     else 
         if(valorNumerico > 1750){
@@ -20,3 +29,15 @@ function moverCarrinho(valor) {
         menos.style.display = "none"
     }
 }
+
+const score = document.getElementById("scoreDisplay")
+
+let timer;
+let pontos = 500;
+let tempo = 0;
+
+function startTimer() {
+    timer = setInterval(function() {
+        tempo++;
+        console.log("Tempo decorrido: " + tempo);
+    }, 200);}
