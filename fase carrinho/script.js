@@ -11,7 +11,7 @@ function moverCarrinho(valor) {
         carrinho.style.marginLeft = valorNumerico + 'px'; // Define a margem esquerda com base no valor
     }
     if(valorNumerico >= 1500 && valorNumerico <= 1750){
-        correto.style.display = "flex";
+        correto.style.display = "block";
         menos.style.display = "none"
         userInput.disabled = true;
         buttonProximo.style.display = "flex";
