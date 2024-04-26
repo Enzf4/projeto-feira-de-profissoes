@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placart</title>
+    <title>Placar</title>
     <link rel="shortcut icon" href="../PaginaInicial/assets/logo-cavalo-branco.ico"/>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -50,6 +50,10 @@
 
 
 #div_lista{
+    display: flex;
+    justify-content: center; /* Alinha os itens horizontalmente no centro */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    flex-direction: column;
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
