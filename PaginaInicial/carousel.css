@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Urbanist", sans-serif;
+  overflow-x: hidden;
 }
 
 .container {
@@ -51,7 +52,8 @@ body {
   margin: auto;
   cursor: pointer;
   pointer-events: none;
-
+  border: 2px solid transparent;
+  border-radius: 10px;
 }
 
 .cards .card {
@@ -82,8 +84,9 @@ body {
 #s7:checked ~ .cards #slide2,
 #s8:checked ~ .cards #slide3,
 #s9:checked ~ .cards #slide4 {
-  box-shadow: 0px 4px 26px 1px #1fcad3;
   transform: translate3d(-110%, 0, -480px);
+  border-style: solid;
+  border-color: #1fcad3;
 }
 
 /* third card left */
@@ -96,11 +99,12 @@ body {
 #s7:checked ~ .cards #slide3,
 #s8:checked ~ .cards #slide4,
 #s9:checked ~ .cards #slide5 {
-  box-shadow: 0px 4px 26px 1px #1fcad3;
   transform: translate3d(-70%, 0, -240px);
+  border-style: solid;
+  border-color: #1fcad3;
 }
 
-/* second caed left  */
+/* second card left  */
 #s1:checked ~ .cards #slide7,
 #s2:checked ~ .cards #slide8,
 #s3:checked ~ .cards #slide9,
@@ -110,9 +114,11 @@ body {
 #s7:checked ~ .cards #slide4,
 #s8:checked ~ .cards #slide5,
 #s9:checked ~ .cards #slide6 {
-  box-shadow: 0px 4px 26px 1px #1fcad3;
   transform: translate3d(-35%, 0, -120px);
+  border-style: solid;
+  border-color: #1fcad3;
 }
+
 #s1:checked ~ .cards #slide8,
 #s2:checked ~ .cards #slide9,
 #s3:checked ~ .cards #slide1,
@@ -122,8 +128,9 @@ body {
 #s7:checked ~ .cards #slide5,
 #s8:checked ~ .cards #slide6,
 #s9:checked ~ .cards #slide7 {
-  box-shadow: 0px 4px 26px 1px #1fcad3;
   transform: translate3d(70%, 0, -240px);
+  border-style: solid;
+  border-color: #1fcad3;
 }
 
 #s1:checked ~ .cards #slide9,
@@ -135,8 +142,10 @@ body {
 #s7:checked ~ .cards #slide6,
 #s8:checked ~ .cards #slide7,
 #s9:checked ~ .cards #slide8 {
-  box-shadow: 0px 4px 26px 1px #1fcad3;
   transform: translate3d(70%, 0, -240px);
+  border-style: solid;
+  border-color: #1fcad3;
+  
 }
 
 /* middle card */
@@ -149,8 +158,10 @@ body {
 #s7:checked ~ .cards #slide7,
 #s8:checked ~ .cards #slide8,
 #s9:checked ~ .cards #slide9 {
-  box-shadow: 0px 4px 26px 1px #1fcad3;
   transform: translate3d(0, 0, 0);
+  border-style: solid;
+  border-color: #1fcad3;
+  
 }
 
 /* second card right */
@@ -163,8 +174,10 @@ body {
 #s7:checked ~ .cards #slide8,
 #s8:checked ~ .cards #slide9,
 #s9:checked ~ .cards #slide1 {
-  box-shadow: 0px 4px 26px 1px #1fcad3;
   transform: translate3d(35%, 0, -120px);
+  border-style: solid;
+  border-color: #1fcad3;
+  
 }
 
 /* third card right */
@@ -177,8 +190,10 @@ body {
 #s7:checked ~ .cards #slide9,
 #s8:checked ~ .cards #slide1,
 #s9:checked ~ .cards #slide2 {
-  box-shadow: 0px 4px 26px 1px #1fcad3;
   transform: translate3d(110%, 0, -480px);
+  border-style: solid;
+  border-color: #1fcad3;
+  
 }
 
 /* fourth card right */
@@ -191,8 +206,9 @@ body {
 #s7:checked ~ .cards #slide1,
 #s8:checked ~ .cards #slide2,
 #s9:checked ~ .cards #slide3 { 
-  box-shadow: 0px 4px 26px 1px #1fcad3;
   transform: translate3d(-110%, 0, -480px);
+  border-style: solid;
+  border-color: #1fcad3;
 }
 
 
