@@ -85,10 +85,9 @@ body {
 
 #correto{
     color: rgba(88, 251, 76, 0.884) ;
-    font-size: 50px;
+    font-size: 35px;
     display: none;
-    justify-content: center;
-    padding-top: 50px;
+    margin-top: 15px;
 }
 
 #menos{
