@@ -23,6 +23,21 @@ targetSquare.style.left = `${targetLeft}px`;
 function movePlayer(event) {
     if (tempo < 60) {
         var valor = Number(valorIteração.value);
+
+        valorIteração.addEventListener('input', function() {
+            let valor = parseInt(valorIteração.value);
+            
+            // Verificação de valor no input 
+            if (valor > 50) {
+                valor = 50;
+                valorIteração.value = valor; 
+            }else if(valor < 0){
+                valor = 0;
+                valorIteração.value = valor;
+            }
+        });
+
+        // Movimentação
         switch (event.key) {
             case 'ArrowUp':
                 playerTop -= valor;
@@ -104,6 +119,8 @@ let timer;
 let pontos = 0;
 let tempo = 0;
 
+
+// TEMPO EM SEGUNDOS + variavel de jogoIniciado
 function startTimer() {
     if (!jogoIniciado) {
         jogoIniciado = true;
