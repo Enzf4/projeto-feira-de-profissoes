@@ -6,14 +6,15 @@ function gravarUsuario(game_id, usuario, pontos) {
     var ref = firebase.database().ref('Placar/');
     ref.orderByChild('nome').equalTo(usuario).once('value', snapshot => {
         if (snapshot.exists()) {
-            continuar.disabled = true;
             alert('O nome já foi escolhido. Por favor, escolha outro nome.');
+            continuar.disabled = true;
         } else {
             ref.child(game_id).set({
                 nome: usuario,
                 pontos: pontos,
             });
             alert("Usuário registrado com sucesso.");
+            document.getElementById("continuar").disabled = false;
         }
     });
 }
@@ -32,7 +33,6 @@ document.getElementById("usuarioBtn").addEventListener("click", function() {
     localStorage.setItem('game_id', game_id);
     
     gravarUsuario(game_id, usuario, 0);
-    document.getElementById("continuar").disabled = false;
 });
 
 async function onClick() {
