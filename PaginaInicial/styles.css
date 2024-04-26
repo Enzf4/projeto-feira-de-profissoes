@@ -336,4 +336,244 @@ body::before {
     button{
         width: 100%;
     }
+
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500;600;700&display=swap");
+
+body {
+  width: 100svw;
+  margin: 0;
+  padding: 0;
+  font-family: "Urbanist", sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-wrapper {
+  width: 100%;
+}
+
+.carousel-wrapper .slider {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+
+.carousel-wrapper .slider input {
+  display: none;
+}
+
+.cards {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  position: relative;
+  height: 31.25rem;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.cards label {
+  transition: transform 0.55s ease 0s;
+  position: absolute;
+  width: 18.75rem;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  cursor: pointer;
+  pointer-events: none;
+
+}
+
+.cards .card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: all 0.35s ease 0s;
+}
+
+.cards .card:hover {
+  transform: scale(1.05);
+}
+
+.cards .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* fourth card left */
+#s1:checked ~ .cards #slide5,
+#s2:checked ~ .cards #slide6,
+#s3:checked ~ .cards #slide7,
+#s4:checked ~ .cards #slide8,
+#s5:checked ~ .cards #slide9,
+#s6:checked ~ .cards #slide1,
+#s7:checked ~ .cards #slide2,
+#s8:checked ~ .cards #slide3,
+#s9:checked ~ .cards #slide4 {
+  box-shadow: 0px 4px 26px 1px #1fcad3;
+  transform: translate3d(-110%, 0, -480px);
+}
+
+/* third card left */
+#s1:checked ~ .cards #slide6,
+#s2:checked ~ .cards #slide7,
+#s3:checked ~ .cards #slide8,
+#s4:checked ~ .cards #slide9,
+#s5:checked ~ .cards #slide1,
+#s6:checked ~ .cards #slide2,
+#s7:checked ~ .cards #slide3,
+#s8:checked ~ .cards #slide4,
+#s9:checked ~ .cards #slide5 {
+  box-shadow: 0px 4px 26px 1px #1fcad3;
+  transform: translate3d(-70%, 0, -240px);
+}
+
+/* second caed left  */
+#s1:checked ~ .cards #slide7,
+#s2:checked ~ .cards #slide8,
+#s3:checked ~ .cards #slide9,
+#s4:checked ~ .cards #slide1,
+#s5:checked ~ .cards #slide2,
+#s6:checked ~ .cards #slide3,
+#s7:checked ~ .cards #slide4,
+#s8:checked ~ .cards #slide5,
+#s9:checked ~ .cards #slide6 {
+  box-shadow: 0px 4px 26px 1px #1fcad3;
+  transform: translate3d(-35%, 0, -120px);
+}
+#s1:checked ~ .cards #slide8,
+#s2:checked ~ .cards #slide9,
+#s3:checked ~ .cards #slide1,
+#s4:checked ~ .cards #slide2,
+#s5:checked ~ .cards #slide3,
+#s6:checked ~ .cards #slide4,
+#s7:checked ~ .cards #slide5,
+#s8:checked ~ .cards #slide6,
+#s9:checked ~ .cards #slide7 {
+  box-shadow: 0px 4px 26px 1px #1fcad3;
+  transform: translate3d(70%, 0, -240px);
+}
+
+#s1:checked ~ .cards #slide9,
+#s2:checked ~ .cards #slide1,
+#s3:checked ~ .cards #slide2,
+#s4:checked ~ .cards #slide3,
+#s5:checked ~ .cards #slide4,
+#s6:checked ~ .cards #slide5,
+#s7:checked ~ .cards #slide6,
+#s8:checked ~ .cards #slide7,
+#s9:checked ~ .cards #slide8 {
+  box-shadow: 0px 4px 26px 1px #1fcad3;
+  transform: translate3d(70%, 0, -240px);
+}
+
+/* middle card */
+#s1:checked ~ .cards #slide1,
+#s2:checked ~ .cards #slide2,
+#s3:checked ~ .cards #slide3,
+#s4:checked ~ .cards #slide4,
+#s5:checked ~ .cards #slide5,
+#s6:checked ~ .cards #slide6,
+#s7:checked ~ .cards #slide7,
+#s8:checked ~ .cards #slide8,
+#s9:checked ~ .cards #slide9 {
+  box-shadow: 0px 4px 26px 1px #1fcad3;
+  transform: translate3d(0, 0, 0);
+}
+
+/* second card right */
+#s1:checked ~ .cards #slide2,
+#s2:checked ~ .cards #slide3,
+#s3:checked ~ .cards #slide4,
+#s4:checked ~ .cards #slide5,
+#s5:checked ~ .cards #slide6,
+#s6:checked ~ .cards #slide7,
+#s7:checked ~ .cards #slide8,
+#s8:checked ~ .cards #slide9,
+#s9:checked ~ .cards #slide1 {
+  box-shadow: 0px 4px 26px 1px #1fcad3;
+  transform: translate3d(35%, 0, -120px);
+}
+
+/* third card right */
+#s1:checked ~ .cards #slide3,
+#s2:checked ~ .cards #slide4,
+#s3:checked ~ .cards #slide5,
+#s4:checked ~ .cards #slide6,
+#s5:checked ~ .cards #slide7,
+#s6:checked ~ .cards #slide8,
+#s7:checked ~ .cards #slide9,
+#s8:checked ~ .cards #slide1,
+#s9:checked ~ .cards #slide2 {
+  box-shadow: 0px 4px 26px 1px #1fcad3;
+  transform: translate3d(110%, 0, -480px);
+}
+
+/* fourth card right */
+#s1:checked ~ .cards #slide4,
+#s2:checked ~ .cards #slide5,
+#s3:checked ~ .cards #slide6,
+#s4:checked ~ .cards #slide7,
+#s5:checked ~ .cards #slide8,
+#s6:checked ~ .cards #slide9,
+#s7:checked ~ .cards #slide1,
+#s8:checked ~ .cards #slide2,
+#s9:checked ~ .cards #slide3 { 
+  box-shadow: 0px 4px 26px 1px #1fcad3;
+  transform: translate3d(-110%, 0, -480px);
+}
+
+
+.dots {
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  padding-top: 30px;
+}
+
+.dots label {
+  width: 36px;
+  height: 4px;
+  cursor: pointer;
+  border-radius: 0;
+  background-color: #FFF;
+  opacity: 1;
+}
+
+.dots label.active {
+  background-color: #1fcad3;
+}
+
+.slider-arrow-next {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  top: calc(50% - 38px);
+  right: 20px;
+  background: url("/img/arrowRight.svg") no-repeat center/contain;
+}
+
+.slider-arrow-prev {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  top: calc(50% - 38px);
+  left: 20px;
+  background: url("/img/arrowLeft.svg") no-repeat center/contain;
+}
 }
