@@ -26,7 +26,9 @@ document.getElementById("continuar").addEventListener("click", function() {
 const proximasFases = [
     "../Fase Filmes/InterFilme.html",
     "../fase carrinho/InterCarrinho.html",
-    "../fase pizza/intermediaria.html"
+    "../fase pizza/intermediaria.html",
+    "../Final.html"
+    
 ];
 
 // Recupera o valor de faseAtualIndex do localStorage ou define como 0 se não existir
