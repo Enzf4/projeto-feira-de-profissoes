@@ -1,16 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Satisfy&display=swap');
 
-@keyframes rainbow {
-    0% { color: red; }
-    14% { color: orange; }
-    28% { color: yellow; }
-    42% { color: rgb(0, 255, 0); }
-    56% { color: rgb(0, 0, 255); }
-    70% { color: rgb(162, 0, 255); }
-    84% { color: rgb(255, 0, 255); }
-    100% { color: red; }
-}
-
 ::-webkit-scrollbar{
     width: 8px;
 }
