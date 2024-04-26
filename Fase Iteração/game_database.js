@@ -27,6 +27,7 @@ const proximasFases = [
     "../Fase Filmes/InterFilme.html",
     "../fase carrinho/InterCarrinho.html",
     "../fase pizza/intermediaria.html",
+    "../Fase Iteração/InterIteração.html",
     "../Final.html"
 ];
 

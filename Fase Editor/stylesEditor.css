@@ -133,7 +133,9 @@
 
     .fundo{
         display: flex;
+        align-items: center;
         width: 100vw;
         background-color: aliceblue;
-        min-height:80vh;
+        min-height:60vh;
+        max-height:80vh;
     }
