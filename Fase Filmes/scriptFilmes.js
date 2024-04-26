@@ -53,6 +53,8 @@ function updatePoster() {
         size.disabled = true;
         const pontuacaoFinal = Math.max(pontos - tempo, 0);
         score.innerText = pontuacaoFinal;
+        editorId = localStorage.getItem('game_id');
+        update_game(editorId, pontuacaoFinal);
         clearTimeout(timer);
     }
 }
@@ -66,3 +68,4 @@ if (query != "" || query != null) {
         }
     });
 }
+

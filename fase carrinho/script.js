@@ -11,14 +11,20 @@ function moverCarrinho(valor) {
         carrinho.style.marginLeft = valorNumerico + 'px'; // Define a margem esquerda com base no valor
     }
     if(valorNumerico >= 1500 && valorNumerico <= 1750){
-        correto.style.display = "flex";
+        correto.style.display = "block";
         menos.style.display = "none"
         userInput.disabled = true;
         buttonProximo.style.display = "flex";
         if(pontos - tempo > 0){
-            score.innerText = pontos - tempo;
+            const pontuacaoCarrinho = Math.max(pontos - tempo, 0);
+            score.innerText = pontuacaoCarrinho;
+            carrinhoId = localStorage.getItem('game_id');
+            update_game(carrinhoId, pontuacaoCarrinho);
         }else{
-            score.innerText = 0;
+            const pontuacaoCarrinho = Math.max(pontos - tempo, 0);
+            score.innerText = pontuacaoCarrinho;
+            carrinhoId = localStorage.getItem('game_id');
+            update_game(carrinhoId, pontuacaoCarrinho);
         }
     }
     else 
@@ -41,3 +47,4 @@ function startTimer() {
         tempo++;
         console.log("Tempo decorrido: " + tempo);
     }, 200);}
+

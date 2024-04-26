@@ -19,7 +19,7 @@ function gravarUsuario(game_id, usuario, pontos) {
 }
 
 document.getElementById("usuarioBtn").addEventListener("click", function() {
-    game_id = firebase.database().ref().child('placar').push().key;
+    let game_id = firebase.database().ref().child('placar').push().key;
     let usuario = $('#usuario').val();
     
     // Verifica se o campo de entrada está vazio
@@ -27,9 +27,13 @@ document.getElementById("usuarioBtn").addEventListener("click", function() {
         // Se estiver vazio, não faz nada
         return;
     }
+    
+    // Armazena o game_id no localStorage
+    localStorage.setItem('game_id', game_id);
+    
     gravarUsuario(game_id, usuario, 0);
     document.getElementById("continuar").disabled = false;
-} );
+});
 
 async function onClick() {
     game_id = firebase.database().ref().child('placar').push().key;
@@ -55,7 +59,8 @@ usuarioInput.addEventListener("input", function() {
     }
 });
 
-function readUserData() {
+
+window.addEventListener("load", function() {
     var var_lista = document.getElementById("div_lista");
     var dados = "";
     var jogadores = [];
@@ -78,26 +83,29 @@ function readUserData() {
 
         var_lista.innerHTML = dados;
     });
-}
+});
+
+
 
 function update_game(game_id, pontos) {
     if (!game_id) return { success: false, messagem: 'Invalid game'};
 
     let game_ref = firebase.database().ref('/Placar/' + game_id);
-    let updates = {};
-    updates['pontos'] += pontos;
 
-    game_ref.update(updates)
-    .then(function () {
-        return { success: true, message: 'Game created'};
-    })
-    .catch(function (error){
-        return { success: false, message: `Update failed: ${error.message}`};
+    game_ref.once('value').then(function(snapshot) {
+        let current_points = snapshot.val().pontos || 0;
+        let updates = {};
+        updates['pontos'] = current_points + pontos;
+
+        game_ref.update(updates)
+        .then(function () {
+            return { success: true, message: 'Game updated'};
+        })
+        .catch(function (error){
+            return { success: false, message: `Update failed: ${error.message}`};
+        });
     });
 }
-
-game_database.read = readUserData;
-game_database.update = update_game;
 
 document.getElementById("continuar").addEventListener("click", function() {
     window.location.href = "../Fase Editor/InterEditor.html";

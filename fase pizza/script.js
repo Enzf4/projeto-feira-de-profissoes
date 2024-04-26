@@ -37,9 +37,15 @@ function finalizar() {
         aviso1.style.display = "none";
         correto.style.display = "block";
         if(pontos - tempo > 0){
-            score.innerText = pontos - tempo;
+            const pontuacaoPizza = Math.max(pontos - tempo, 0);
+            score.innerText = pontuacaoPizza;
+            editorId = localStorage.getItem('game_id');
+            update_game(editorId, pontuacaoPizza);
         }else{
-            score.innerText = 0;
+            const pontuacaoPizza = Math.max(pontos - tempo, 0);
+            score.innerText = pontuacaoPizza;
+            editorId = localStorage.getItem('game_id');
+            update_game(editorId, pontuacaoPizza);
         }
     }
 }
