@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Satisfy&display=swap');
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #22212b;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3d3c4a;
+}
+
+input,
+textarea,
+button,
+select,
+a{
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root{
+    --azul-detalhes: #1fcad3;
+    --cor-fundo:#121214;
+    --cor-fonte:aliceblue;
+}
+
+*{
+    margin: 0px;
+}
+
+html{
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-fundo);
+}
+
+h1,h2{
+    font-size: 2rem;
+    color: var(--cor-fonte);
+}
+
+#gameBoard{
+    margin-bottom: 20px;
+}
+
+input{
+    margin-left: 10px;
+    outline: none;
+    height: 15px;
+    background-color: transparent;
+    border-radius: 15px;
+    color: #EEEEEE;
+    padding: 5px 10px;
+    color: var(--cor-fonte);
+    font-size: 1.2rem;
+    border: 2px solid var(--azul-detalhes);
+    background-color: transparent;
+
+}
+
+#start{
+    margin: 20px 20px;
+    height: 45px;
+    transition: all 0.2s ease;
+}
+
+#start:hover{
+    box-shadow: #dbf4fd2e 0px 0px 60px 0px;
+   cursor: pointer;
+}
+
+#continuar{
+    display: none;
+    margin: 20px 20px;
+    padding: 5px 20px;
+    height: 55px;
+    transition: all 0.2s ease;
+}
+
+#continuar:hover{
+    box-shadow: #dbf4fd2e 0px 0px 60px 0px;
+    cursor: pointer;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+#gameBoard {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+#player {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+}
+
+#targetSquare {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #0f0;
+    display: block;
+}
+
+#message {
+    display: none;
+    font-size: 2rem;
+    margin-top: 20px;
+}
+
+h1{
+    margin: 10px 0px;
+}
+
+#start{
+    padding: 10px;
+    width: 100px;
+}
+
+#iteração{
+    display: flex;
+    align-items: center;
+}
+
+#inputIteração{
+    width: 50px;
+    height: 20px;
+}
