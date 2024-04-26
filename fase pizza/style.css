@@ -31,10 +31,6 @@ a{
     --cor-fonte:aliceblue;
 }
 
-#raimbow{
-    animation: rainbow 3s linear infinite;
-}
-
 html{
     background-color: var(--cor-fundo);
 }
@@ -168,6 +164,7 @@ h2{
 }
 
 input{
+    outline: none;
     height: 15px;
     background-color: transparent;
     border-radius: 15px;
