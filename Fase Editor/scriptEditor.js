@@ -64,8 +64,24 @@ function verificarCampos() {
     }
 }
 
+
+
 inputh1.addEventListener('input', atualizarh1);
 inputh2.addEventListener('input', atualizarh2);
 inputdesc.addEventListener('input', atualizardesc);
 inputdescimg.addEventListener('input', atualizardescimg);
 inputimg.addEventListener('input', atualizarimg);
+
+
+
+
+
+
+
+
+
+window.addEventListener("load", function() {
+    const pontuacaoEditor = 500;
+    editorId = localStorage.getItem('game_id');
+    update_game(editorId, pontuacaoEditor);
+})

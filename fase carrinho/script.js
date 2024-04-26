@@ -16,9 +16,15 @@ function moverCarrinho(valor) {
         userInput.disabled = true;
         buttonProximo.style.display = "flex";
         if(pontos - tempo > 0){
-            score.innerText = pontos - tempo;
+            const pontuacaoCarrinho = Math.max(pontos - tempo, 0);
+            score.innerText = pontuacaoCarrinho;
+            carrinhoId = localStorage.getItem('game_id');
+            update_game(carrinhoId, pontuacaoCarrinho);
         }else{
-            score.innerText = 0;
+            const pontuacaoCarrinho = Math.max(pontos - tempo, 0);
+            score.innerText = pontuacaoCarrinho;
+            carrinhoId = localStorage.getItem('game_id');
+            update_game(carrinhoId, pontuacaoCarrinho);
         }
     }
     else 
@@ -41,3 +47,4 @@ function startTimer() {
         tempo++;
         console.log("Tempo decorrido: " + tempo);
     }, 200);}
+
