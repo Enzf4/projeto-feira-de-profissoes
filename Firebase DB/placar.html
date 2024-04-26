@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Placart</title>
+    <link rel="shortcut icon" href="../PaginaInicial/assets/logo-cavalo-branco.ico"/>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
@@ -13,7 +14,7 @@
 <body>
     <div class="box">
         <div>
-            <h1>Placar</h1>
+            <h1 id="h1Placar">Placar</h1>
         </div>
     
         <div id="div_lista"></div>
@@ -41,6 +42,16 @@
 
 #continuar, #usuario, #usuarioBtn{
     display: none;
+}
+
+#h1Placar{
+    font-size: 3rem;    
+}
+
+
+#div_lista{
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 ::-webkit-scrollbar{
