@@ -6,6 +6,9 @@
     <title>Fase Iteração</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" async></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" async></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js" async></script>
+    <script src="../Firebase DB/JS/game_database.js" async></script>
 </head>
 <body>
     <h1 id="tempo">0</h1>
@@ -23,12 +26,9 @@
     <div id="message">Tempo encerrado</div>
 
     <h2>Pontuação Total: <span id="scoreDisplay">0</span><h2>
-    <input type="button" id="continuar" value="Continuar">
+    <!-- <input type="button" id="continuar" value="Continuar"> -->
+    <a href="../Firebase DB/placar.html"><button id="continuar">Continuar</button></a>
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-    <script src="firebase.js" async></script>
-    <script src="game_database.js" async></script>
 </body>
 
 </html>

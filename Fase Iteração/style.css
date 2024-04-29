@@ -76,16 +76,21 @@ input{
 }
 
 #continuar{
+    background-color: transparent;
+    border-style: solid;
+    padding: 0.5rem 1rem;
+    border: 2px solid #1fcad3;
+    border-radius: 10px;
+    color: aliceblue;
+    font-size: 20px;
+    cursor: pointer;
     display: none;
-    margin: 20px 20px;
-    padding: 5px 20px;
-    height: 55px;
+    margin: auto;
     transition: all 0.2s ease;
 }
 
 #continuar:hover{
-    box-shadow: #dbf4fd2e 0px 0px 60px 0px;
-    cursor: pointer;
+    box-shadow: rgba(240, 248, 255, 0.182) 0px 0px 30px 0px;
 }
 
 
