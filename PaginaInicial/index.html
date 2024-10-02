@@ -4,37 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.I - Unisanta</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="/PaginaInicial/carousel.css">
     <link rel="shortcut icon" href="PaginaInicial/assets/logo-cavalo-branco.ico"/>
-    <script src="scripts.js" async></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav id="navbar"> <!--nav-->
-        <div class="logo"><a href="https://unisanta.br/"><img id="logo" src="assets/logo-vertical-branco.png" alt="Logo"></a></div> <!--logo-->
-        <div class="nav-items"> <!--links da nav-->
-            <a href="#" id="about-button">Sobre</a> <!--link-->
-            <a href="../Firebase DB/index.html"> <button>Conhecer</button> </a> <!--link-->
+    <nav id="navbar">
+        <div class="logo"><a href="https://unisanta.br/"><img id="logo" src="assets/logo-vertical-branco.png" alt="Logo"></a></div>
+        <div class="nav-items">
+            <a href="#about" id="about-button">Sobre</a>
+            <a href="../Firebase DB/index.html"> <button>Conhecer</button> </a>
         </div>
     </nav>
-    <section class="hero"> <!--section principal (hero)-->
-        <div class="hero-container"> <!--elementos dessa section principal-->
-            <div class="column-left"> <!--elementos da esquerda-->
-                <h1 id="h1">Conheça o curso de S.I da Universidade Santa Cecília</h1>
+    <section class="hero">
+        <div class="hero-container">
+            <div class="column-left">
+                <h1 id="h1">Conheça os cursos de tecnologia da Universidade Santa Cecília</h1>
                 <p>O curso de Sistemas de Informação da Unisanta visa prepara-lo para atuar no desenvolvimento de sistemas.</p>
                 <button id="button">Conheça na Prática</button>
             </div>
-            <div class="column-right"> <!--elementos da direita-->
-                <img src="assets/dragãoSI.png" alt="Dragão" class="hero-img">
+            <div class="column-right">
+                <img src="assets/dragao.png" alt="Dragão" class="hero-img">
             </div>
         </div>
     </section>
     <div class="main-container">
         <div class="partnership">
             <h1>Parcerias com:</h1>
-            <img src="assets/pngwing.com.png" alt="">
-            <img src="assets/IBM_logo.svg.png" alt="">
-            <img src="assets/oracle-logo.png" alt="">
+            <img src="assets/pngwing.com.png" alt="Parceiro 1">
+            <img src="assets/IBM_logo.svg.png" alt="Parceiro 2">
+            <img src="assets/oracle-logo.png" alt="Parceiro 3">
         </div>
         <div class="about" id="about">
             <div class="about-column-left">
@@ -42,96 +45,240 @@
                 <p>A Universidade Santa Cecília de Santos, fundada em 1961, destaca-se como uma instituição de ensino superior comprometida com a excelência acadêmica e a formação integral dos seus alunos. Com uma ampla gama de cursos de graduação e pós-graduação, um corpo docente qualificado e instalações modernas. Além disso, a universidade valoriza a responsabilidade social e a inovação tecnológica, promovendo atividades que impulsionam o progresso e a transformação digital, capacitando seus alunos para enfrentar os desafios do mundo contemporâneo.</p>
             </div>
             <div class="about-column-right">
-                <img src="assets/Screenshot_1.png" alt="">
+                <img src="assets/Screenshot_1.png" alt="Sobre a Universidade">
             </div>
         </div>
-        <!--<div class="container">
-            <div class="carousel-wrapper">
-                <div class="slider relative w-full mt-16 lg:mt-0">
-                    <input type="radio" name="slider" id="s1" checked>
-                    <input type="radio" name="slider" id="s2">
-                    <input type="radio" name="slider" id="s3">
-                    <input type="radio" name="slider" id="s4">
-                    <input type="radio" name="slider" id="s5">
-                    <input type="radio" name="slider" id="s6">
-                    <input type="radio" name="slider" id="s7">
-                    <input type="radio" name="slider" id="s8">
-                    <input type="radio" name="slider" id="s9">
+
+        <!-- Particulas -->
+        <div id="particles-js"></div> 
+
+        <div class="si-all">
+            <section id="si-course" class="si-course">
+                <div class="si-course-container">
+                    <div class="course-title-div">
+                        <h1 class="header1">Curso de Sistemas de Informação</h1>
+                    </div>
+                    
+                    <p>O curso de Sistemas de Informação da Unisanta prepara você para os desafios do mundo digital, combinando conhecimentos de tecnologia, gestão e negócios.</p>
+                    <div class="course-highlights">
+                        <div class="highlight-item">
+                            <h3>Duração</h3>
+                            <p>4 anos</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h3>Turno</h3>
+                            <p>Noturno</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h3>Modalidade</h3>
+                            <p>Presencial</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+    
+            <div class="glider-contain">
+                <h1 class="header1">Grade curricular</h1>
+                <button aria-label="Previous" class="glider-prev">«</button>
+                <div class="glider">
+                    <div data-tilt><img src="carousel/1.jpg" alt="Image 1"></div>
+                    <div data-tilt><img src="carousel/2.jpg" alt="Image 2"></div>
+                    <div data-tilt><img src="carousel/3.jpg" alt="Image 3"></div>
+                    <div data-tilt><img src="carousel/4.jpg" alt="Image 4"></div>
+                    <div data-tilt><img src="carousel/5.jpg" alt="Image 5"></div>
+                    <div data-tilt><img src="carousel/6.jpg" alt="Image 6"></div>
+                    <div data-tilt><img src="carousel/7.jpg" alt="Image 7"></div>
+                    <div data-tilt><img src="carousel/8.jpg" alt="Image 8"></div>
+                    <div data-tilt><img src="carousel/9.jpg" alt="Image 9"></div>
+                </div>
+                <button aria-label="Next" class="glider-next">»</button>
+                <div role="tablist" class="dots"></div>
+            </div>
+
+            <div class="chart">
+                <h1 class="header1">Áreas de Conhecimento</h1>
+                <canvas id="skills-chart" width="200" height="130"></canvas>
+            </div>
+    
+            
+        </div>
+        <!-- Seção Oportunidades de Carreira -->
+        <section id="career" class="career">
+            <div class="career-container">
+                <h2>Oportunidades de Carreira</h2>
+                <p>Com o diploma em Sistemas de Informação, você estará preparado para atuar em diversas áreas:</p>
+                <ul class="career-list">
+                    <li>Análise e Desenvolvimento de Sistemas</li>
+                    <li>Gestão de Projetos de TI</li>
+                    <li>Administração de Banco de Dados</li>
+                    <li>Segurança da Informação</li>
+                    <li>Inteligência Artificial e Machine Learning</li>
+                    <li>Consultoria em TI</li>
+                </ul>
+            </div>
+        </section>
         
-                    <div class="cards">
-                        <label for="s1" id="slide1">
-                            <div class="card">
-                                <img loading="lazy" src="/PaginaInicial/carousel/1.jpg">
-                            </div>
-                        </label>
-                        <label for="s2" id="slide2">
-                            <div class="card">
-                                <img loading="lazy" src="/PaginaInicial/carousel/2.jpg">
-                            </div>
-                        </label>
-                        <label for="s3" id="slide3">
-                            <div class="card">
-                                <img loading="lazy" src="/PaginaInicial/carousel/3.jpg">
-                            </div>
-                        </label>
-                        <label for="s4" id="slide4">
-                            <div class="card">
-                                <img loading="lazy" src="/PaginaInicial/carousel/4.jpg">
-                            </div>
-                        </label>
-                        <label for="s5" id="slide5">
-                            <div class="card">
-                                <img loading="lazy" src="/PaginaInicial/carousel/5.jpg">
-                            </div>
-                        </label>
-                        <label for="s6" id="slide6">
-                            <div class="card">
-                                <img loading="lazy" src="/PaginaInicial/carousel/6.jpg">
-                            </div>
-                        </label>
-                        <label for="s7" id="slide7">
-                            <div class="card">
-                                <img loading="lazy" src="/PaginaInicial/carousel/7.jpg">
-                            </div>
-                        </label>
-                        <label for="s8" id="slide8">
-                            <div class="card">
-                                <img loading="lazy" src="/PaginaInicial/carousel/8.jpg">
-                            </div>
-                        </label>
-                        <label for="s9" id="slide9">
-                            <div class="card">
-                                <img loading="lazy" src="/PaginaInicial/carousel/9.jpg">
-                            </div>
-                        </label>
-                    </div>
-                    <div class="dots">
-                        <label for="s1" class="active"></label>
-                        <label for="s2"></label>
-                        <label for="s3"></label>
-                        <label for="s4"></label>
-                        <label for="s5"></label>
-                        <label for="s6"></label>
-                        <label for="s7"></label>
-                        <label for="s8"></label>
-                        <label for="s9"></label>
-                    </div>
-                    <div class="slider-arrow-prev"></div>
-                    <div class="slider-arrow-next"></div>
+        <!-- Seção Depoimentos -->
+        <section id="testimonials" class="testimonials">
+            <h2>O que dizem nossos alunos</h2>
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <img src="assets/student1.jpg" alt="Estudante 1">
+                    <p>"O curso de S.I da Unisanta me abriu portas para o mercado de trabalho antes mesmo da formatura!"</p>
+                    <h4>Maria Silva, 7º semestre</h4>
+                </div>
+                <div class="testimonial">
+                    <img src="assets/student2.jpg" alt="Estudante 2">
+                    <p>"Os professores são excelentes e o currículo está sempre atualizado com as tendências do mercado."</p>
+                    <h4>João Santos, ex-aluno</h4>
                 </div>
             </div>
-        </div> -->
+        </section>
         <div class="structure" id="structure">
             <div class="structure-column-left">
                 <h1>Estrutura</h1>
-                <p>A Universidade Santa Cecília possui uma infraestrutura moderna e completa, projetada para proporcionar o melhor ambiente de aprendizado aos seus alunos. Possui laboratórios equipados com tecnologias avançadas, incluindo impressoras 3D que podem ser usadas para projetos e pesquisas. A Unisanta oferece tudo o que os estudantes precisam para uma formação de excelência. </p>
+                <p>A Universidade Santa Cecília possui uma infraestrutura moderna e completa, projetada para proporcionar o melhor ambiente de aprendizado aos seus alunos. Possui laboratórios equipados com tecnologias avançadas, incluindo impressoras 3D que podem ser usadas para projetos e pesquisas. A Unisanta oferece tudo o que os estudantes precisam para uma formação de excelência.</p>
             </div>
             <div class="structure-column-right">
                 <img src="assets/estrutura.jpg" alt="Estrutura da Universidade">
             </div>
-        </div>        
+        </div>
     </div>
 
-    <script src="/PaginaInicial/carousel.js"></script>
+    <!-- Seção Curso de S.I -->
+
+
+    <script defer>
+        window.addEventListener('load', function(){
+            const glider = new Glider(document.querySelector('.glider'), {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                draggable: false,
+                dots: '.dots',
+                arrows: {
+                    prev: '.glider-prev',
+                    next: '.glider-next'
+                },
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2,
+                        }
+                    },
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                        }
+                    }
+                ]
+            });
+    
+            let autoplayInterval = setInterval(() => {
+                const nextIndex = (glider._index + 1) % glider._items.length; // Loop back to the first item
+                glider.scrollItem(nextIndex); // Scroll to the next item
+            }, 3000); // Change slide every 3 seconds
+    
+            document.querySelector('.glider').addEventListener('mouseover', () => {
+                clearInterval(autoplayInterval);
+            });
+    
+            document.querySelector('.glider').addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(() => {
+                    const nextIndex = (glider._index + 1) % glider._items.length; // Loop back to the first item
+                    glider.scrollItem(nextIndex);
+                }, 3000);
+            });
+        });
+    
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    
+        // Initialize Vanilla Tilt
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 50,
+            speed: 400
+        });
+    </script>
+
+<script>
+    particlesJS("particles-js", {
+        particles: {
+            number: { value: 65, density: { enable: true, value_area: 800 } },
+            color: { value: "#ffffff" },
+            shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+            opacity: { 
+                value: 0.3,  
+                random: false,
+                anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#a9fcea",
+                opacity: 0.3, 
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 0.5, 
+                direction: "none",
+                random: false,
+                straight: false,
+                out_mode: "out",
+                bounce: false,
+                attract: { enable: false, rotateX: 600, rotateY: 1200 }
+            }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: { enable: true, mode: "repulse" },
+                onclick: { enable: true, mode: "push" },
+                resize: true
+            },
+            modes: {
+                repulse: { distance: 200, duration: 0.4 },
+                push: { particles_nb: 4 }
+            }
+        },
+        retina_detect: true
+    });
+</script>
+
+<script>
+    const ctx = document.getElementById('skills-chart').getContext('2d');
+    const skillsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Programação', 'Banco de Dados', 'Redes', 'Gestão de TI', 'Análise de Sistemas'],
+            datasets: [{
+                label: 'Habilidades',
+                data: [85, 75, 65, 80, 90],
+                backgroundColor: 'rgba(31, 202, 211, 0.6)',
+                borderColor: 'rgba(31, 202, 211, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 </body>
 </html>
