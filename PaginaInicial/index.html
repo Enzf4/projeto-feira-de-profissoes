@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
     <nav id="navbar">
@@ -23,8 +24,8 @@
     <section class="hero">
         <div class="hero-container">
             <div class="column-left">
-                <h1 id="h1">Conheça os cursos de tecnologia da Universidade Santa Cecília</h1>
-                <p>O curso de Sistemas de Informação da Unisanta visa prepara-lo para atuar no desenvolvimento de sistemas.</p>
+                <h1 id="h1">Conheça os cursos de ADS e Sistemas de Informação da Unisanta</h1>
+                <p>MUDAR ESSE TEXTO PARA ALGO QUE FAÇA SENTIDO.</p>
                 <button id="button">Conheça na Prática</button>
             </div>
             <div class="column-right">
@@ -41,10 +42,10 @@
         </div>
         <div class="about" id="about">
             <div class="about-column-left">
-                <h1>Sobre o Santa</h1>
-                <p>A Universidade Santa Cecília de Santos, fundada em 1961, destaca-se como uma instituição de ensino superior comprometida com a excelência acadêmica e a formação integral dos seus alunos. Com uma ampla gama de cursos de graduação e pós-graduação, um corpo docente qualificado e instalações modernas. Além disso, a universidade valoriza a responsabilidade social e a inovação tecnológica, promovendo atividades que impulsionam o progresso e a transformação digital, capacitando seus alunos para enfrentar os desafios do mundo contemporâneo.</p>
+                <h1>ADS e Sistemas</h1>
+                <p>A Unisanta oferece os cursos de Análise e Desenvolvimento de Sistemas (ADS) e Sistemas de Informação (SI). O curso de ADS é tecnólogo, com foco prático no desenvolvimento de software, programação e banco de dados, formando profissionais em um tempo menor. Já o curso de Sistemas de Informação (SI) é um bacharelado mais abrangente, preparando o aluno tanto para o desenvolvimento de sistemas quanto para a gestão de TI e o planejamento estratégico.
             </div>
-            <div class="about-column-right">
+            <div class="about-column-right" data-aos="fade-left">
                 <img src="assets/Screenshot_1.png" alt="Sobre a Universidade">
             </div>
         </div>
@@ -53,7 +54,7 @@
         <div id="particles-js"></div> 
 
         <div class="si-all">
-            <section id="si-course" class="si-course">
+            <section id="si-course" class="si-course" data-aos="zoom-out">
                 <div class="si-course-container">
                     <div class="course-title-div">
                         <h1 class="header1">Curso de Sistemas de Informação</h1>
@@ -81,7 +82,7 @@
             <div class="glider-contain">
                 <h1 class="header1">Grade curricular</h1>
                 <button aria-label="Previous" class="glider-prev">«</button>
-                <div class="glider">
+                <div class="glider" data-aos="fade-left">
                     <div data-tilt><img src="carousel/1.jpg" alt="Image 1"></div>
                     <div data-tilt><img src="carousel/2.jpg" alt="Image 2"></div>
                     <div data-tilt><img src="carousel/3.jpg" alt="Image 3"></div>
@@ -96,7 +97,7 @@
                 <div role="tablist" class="dots"></div>
             </div>
 
-            <div class="chart">
+            <div class="chart" data-aos="zoom-out">
                 <h1 class="header1">Áreas de Conhecimento</h1>
                 <canvas id="skills-chart" width="200" height="130"></canvas>
             </div>
@@ -109,19 +110,19 @@
                 <h2>Oportunidades de Carreira</h2>
                 <p>Com o diploma em Sistemas de Informação, você estará preparado para atuar em diversas áreas:</p>
                 <ul class="career-list">
-                    <li>Análise e Desenvolvimento de Sistemas</li>
-                    <li>Gestão de Projetos de TI</li>
-                    <li>Administração de Banco de Dados</li>
-                    <li>Segurança da Informação</li>
-                    <li>Inteligência Artificial e Machine Learning</li>
-                    <li>Consultoria em TI</li>
+                    <li data-aos="zoom-out">Análise e Desenvolvimento de Sistemas</li>
+                    <li data-aos="zoom-out">Gestão de Projetos de TI</li>
+                    <li data-aos="zoom-out">Administração de Banco de Dados</li>
+                    <li data-aos="zoom-out">Segurança da Informação</li>
+                    <li data-aos="zoom-out">Inteligência Artificial e Machine Learning</li>
+                    <li data-aos="zoom-out">Consultoria em TI</li>
                 </ul>
             </div>
         </section>
         
         <!-- Seção Depoimentos -->
-        <section id="testimonials" class="testimonials">
-            <h2>O que dizem nossos alunos</h2>
+        <section id="testimonials" class="testimonials" data-aos="zoom-out">
+            <h2>De aluno para aluno</h2>
             <div class="testimonials-container">
                 <div class="testimonial">
                     <img src="assets/student1.jpg" alt="Estudante 1">
@@ -279,6 +280,10 @@
             }
         }
     });
+</script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
 </script>
 </body>
 </html>
