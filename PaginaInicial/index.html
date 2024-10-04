@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -18,14 +19,13 @@
         <div class="logo"><a href="https://unisanta.br/"><img id="logo" src="assets/logo-vertical-branco.png" alt="Logo"></a></div>
         <div class="nav-items">
             <a href="#about" id="about-button">Sobre</a>
-            <a href="../Firebase DB/index.html"> <button>Conhecer</button> </a>
+            <a href="../Firebase DB/index.html"> <button id="discover">Conhecer</button> </a>
         </div>
     </nav>
     <section class="hero">
         <div class="hero-container">
             <div class="column-left">
-                <h1 id="h1">Conheça os cursos de ADS e Sistemas de Informação da Unisanta</h1>
-                <p>MUDAR ESSE TEXTO PARA ALGO QUE FAÇA SENTIDO.</p>
+                <h1 id="h1">Conheça o curso de <span id="typed"></span></h1>
                 <button id="button">Conheça na Prática</button>
             </div>
             <div class="column-right">
@@ -80,25 +80,26 @@
     
     
             <div class="glider-contain">
-                <h1 class="header1">Grade curricular</h1>
+                <h1 class="header1">Grade curricular SI</h1>
                 <button aria-label="Previous" class="glider-prev">«</button>
                 <div class="glider" data-aos="fade-left">
-                    <div data-tilt><img src="carousel/1.jpg" alt="Image 1"></div>
-                    <div data-tilt><img src="carousel/2.jpg" alt="Image 2"></div>
-                    <div data-tilt><img src="carousel/3.jpg" alt="Image 3"></div>
-                    <div data-tilt><img src="carousel/4.jpg" alt="Image 4"></div>
-                    <div data-tilt><img src="carousel/5.jpg" alt="Image 5"></div>
-                    <div data-tilt><img src="carousel/6.jpg" alt="Image 6"></div>
-                    <div data-tilt><img src="carousel/7.jpg" alt="Image 7"></div>
-                    <div data-tilt><img src="carousel/8.jpg" alt="Image 8"></div>
-                    <div data-tilt><img src="carousel/9.jpg" alt="Image 9"></div>
+                    <div data-tilt class="glidersi"><img src="carousel/1.jpg" alt="Image 1"></div>
+                    <div data-tilt class="glidersi"><img src="carousel/2.jpg" alt="Image 2"></div>
+                    <div data-tilt class="glidersi"><img src="carousel/3.jpg" alt="Image 3"></div>
+                    <div data-tilt class="glidersi"><img src="carousel/4.jpg" alt="Image 4"></div>
+                    <div data-tilt class="glidersi"><img src="carousel/5.jpg" alt="Image 5"></div>
+                    <div data-tilt class="glidersi"><img src="carousel/6.jpg" alt="Image 6"></div>
+                    <div data-tilt class="glidersi"><img src="carousel/7.jpg" alt="Image 7"></div>
+                    <div data-tilt class="glidersi"><img src="carousel/8.jpg" alt="Image 8"></div>
+                    <div data-tilt class="glidersi"><img src="carousel/9.jpg" alt="Image 9"></div>
                 </div>
-                <button aria-label="Next" class="glider-next">»</button>
-                <div role="tablist" class="dots"></div>
+                <button aria-label="Next" class="glider-next">»</button>           
+                    <div role="tablist" class="dots"></div>
+                
             </div>
 
             <div class="chart" data-aos="zoom-out">
-                <h1 class="header1">Áreas de Conhecimento</h1>
+                <h1 class="header1">Áreas de Conhecimento SI</h1>
                 <canvas id="skills-chart" width="200" height="130"></canvas>
             </div>
     
@@ -106,9 +107,9 @@
         </div>
         <!-- Seção Oportunidades de Carreira -->
         <section id="career" class="career">
-            <div class="career-container">
-                <h2>Oportunidades de Carreira</h2>
-                <p>Com o diploma em Sistemas de Informação, você estará preparado para atuar em diversas áreas:</p>
+            <div class="career-container" style="text-align: left;">
+                <h1 id='oportunities' class="header1">Oportunidades de Carreira SI</h1>
+                <p >Com o diploma em Sistemas de Informação, você estará preparado para atuar em diversas áreas:</p>
                 <ul class="career-list">
                     <li data-aos="zoom-out">Análise e Desenvolvimento de Sistemas</li>
                     <li data-aos="zoom-out">Gestão de Projetos de TI</li>
@@ -121,21 +122,88 @@
         </section>
         
         <!-- Seção Depoimentos -->
+        <div class="si-all">
+            <section id="ads-course" class="si-course" data-aos="zoom-out">
+                <div class="si-course-container">
+                    <div class="course-title-div2">
+                        <h1 class="header1">Curso de Análise e Desenvolvimento de Sistemas</h1>
+                    </div>
+                    
+                    <p>O curso de Análise e Desenvolvimento de Sistemas da Unisanta prepara você para os desafios do mercado de tecnologia, com foco em programação, banco de dados e desenvolvimento de software.</p>
+                    <div class="course-highlights">
+                        <div class="highlight-item">
+                            <h3>Duração</h3>
+                            <p>2,5 anos</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h3>Turno</h3>
+                            <p>Noturno</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h3>Modalidade</h3>
+                            <p>Presencial</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <div class="glider-contain">
+                <h1 class="header1">Grade curricular ADS</h1>
+                <button aria-label="Previous" class="glider-prev">«</button>
+                <div class="glider" data-aos="fade-left">
+                    <div data-tilt class="gliderads"><img src="carousel/1ads.png" alt="ADS Image 1"></div>
+                    <div data-tilt class="gliderads"><img src="carousel/2ads.png" alt="ADS Image 2"></div>
+                    <div data-tilt class="gliderads"><img src="carousel/3ads.png" alt="ADS Image 3"></div>
+                    <div data-tilt class="gliderads"><img src="carousel/4ads.png" alt="ADS Image 4"></div>
+                    <div data-tilt class="gliderads"><img src="carousel/5ads.png" alt="ADS Image 5"></div>
+                    <div data-tilt class="gliderads"><img src="carousel/6ads.png" alt="ADS Image 6"></div>
+                </div>
+                <button aria-label="Next" class="glider-next">»</button>
+                <div id="dotssi">
+                    <div role="tablist" class="dots" id="dotsads">
+
+                    </div></div>
+                
+            </div>
+        
+            <div class="chart" data-aos="zoom-out">
+                <h1 class="header1">Áreas de Conhecimento ADS</h1>
+                <canvas id="ads-skills-chart" width="200" height="130"></canvas>
+            </div>
+        </div>
+        
+        <!-- Seção Oportunidades de Carreira -->
+        <section id="ads-career" class="career">
+            <div class="career-container">
+                <h1 class="header1" id="oportunitiesADS">Oportunidades de Carreira ADS</h1>
+                <p>Com o diploma em Análise e Desenvolvimento de Sistemas, você estará preparado para atuar em diversas áreas:</p>
+                <ul class="career-list">
+                    <li data-aos="zoom-out">Desenvolvimento de Software</li>
+                    <li data-aos="zoom-out">Análise de Sistemas</li>
+                    <li data-aos="zoom-out">Desenvolvimento Web e Mobile</li>
+                    <li data-aos="zoom-out">Banco de Dados</li>
+                    <li data-aos="zoom-out">DevOps</li>
+                    <li data-aos="zoom-out">Quality Assurance (QA)</li>
+                </ul>
+            </div>
+        </section>
+
         <section id="testimonials" class="testimonials" data-aos="zoom-out">
-            <h2>De aluno para aluno</h2>
+            <h1 class="header1">De aluno para aluno</h1>
             <div class="testimonials-container">
                 <div class="testimonial">
-                    <img src="assets/student1.jpg" alt="Estudante 1">
+                    <img src="assets/827448_dark background, coding screen, software, programm_xl-1024-v1-0.png" alt="Estudante 1">
                     <p>"O curso de S.I da Unisanta me abriu portas para o mercado de trabalho antes mesmo da formatura!"</p>
                     <h4>Maria Silva, 7º semestre</h4>
                 </div>
                 <div class="testimonial">
-                    <img src="assets/student2.jpg" alt="Estudante 2">
+                    <img src="assets/827448_dark background, coding screen, software, programm_xl-1024-v1-0.png" alt="Estudante 2">
                     <p>"Os professores são excelentes e o currículo está sempre atualizado com as tendências do mercado."</p>
                     <h4>João Santos, ex-aluno</h4>
                 </div>
             </div>
         </section>
+
         <div class="structure" id="structure">
             <div class="structure-column-left">
                 <h1>Estrutura</h1>
@@ -147,56 +215,80 @@
         </div>
     </div>
 
-    <!-- Seção Curso de S.I -->
+
+
+
+
+
+
+    <script src="typed-animation.js" defer></script>
+
+
+
+
+
 
 
     <script defer>
-        window.addEventListener('load', function(){
-            const glider = new Glider(document.querySelector('.glider'), {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                draggable: false,
-                dots: '.dots',
-                arrows: {
-                    prev: '.glider-prev',
-                    next: '.glider-next'
-                },
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                        }
-                    },
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                        }
+window.addEventListener('load', function() {
+    var gliders = document.querySelectorAll('.glider-contain');
+    
+    gliders.forEach((gliderContainer, index) => {
+        const gliderElement = gliderContainer.querySelector('.glider');
+        const prevButton = gliderContainer.querySelector('.glider-prev');
+        const nextButton = gliderContainer.querySelector('.glider-next');
+        const dotsElement = gliderContainer.querySelector('.dots');
+
+        new Glider(gliderElement, {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            draggable: true,  // Permite arrastar no desktop
+            dots: dotsElement,
+            arrows: {
+                prev: prevButton,
+                next: nextButton
+            },
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
                     }
-                ]
-            });
-    
-            let autoplayInterval = setInterval(() => {
-                const nextIndex = (glider._index + 1) % glider._items.length; // Loop back to the first item
-                glider.scrollItem(nextIndex); // Scroll to the next item
-            }, 3000); // Change slide every 3 seconds
-    
-            document.querySelector('.glider').addEventListener('mouseover', () => {
-                clearInterval(autoplayInterval);
-            });
-    
-            document.querySelector('.glider').addEventListener('mouseleave', () => {
-                autoplayInterval = setInterval(() => {
-                    const nextIndex = (glider._index + 1) % glider._items.length; // Loop back to the first item
-                    glider.scrollItem(nextIndex);
-                }, 3000);
-            });
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                    }
+                }
+            ]
         });
-    
-        window.addEventListener('scroll', function() {
+
+        // Autoplay
+        let autoplayInterval = setInterval(() => {
+            const nextIndex = (gliderElement._.index + 1) % gliderElement._.items.length;
+            gliderElement.scrollItem(nextIndex);
+        }, 3000); // Alterar tempo do autoplay conforme necessidade (3 segundos neste caso)
+
+        // Pausar autoplay quando o mouse está sobre o carrossel
+        gliderElement.addEventListener('mouseover', () => {
+            clearInterval(autoplayInterval);
+        });
+
+        // Retomar autoplay quando o mouse sai do carrossel
+        gliderElement.addEventListener('mouseleave', () => {
+            autoplayInterval = setInterval(() => {
+                const nextIndex = (gliderElement._.index + 1) % gliderElement._.items.length;
+                gliderElement.scrollItem(nextIndex);
+            }, 3000);
+        });
+    });
+});
+
+
+window.addEventListener('scroll', function() {
             var navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
@@ -204,6 +296,9 @@
                 navbar.classList.remove('scrolled');
             }
         });
+
+        
+
     
         // Initialize Vanilla Tilt
         VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
@@ -211,6 +306,11 @@
             speed: 400
         });
     </script>
+
+
+
+
+
 
 <script>
     particlesJS("particles-js", {
@@ -258,6 +358,12 @@
     });
 </script>
 
+
+
+
+
+
+
 <script>
     const ctx = document.getElementById('skills-chart').getContext('2d');
     const skillsChart = new Chart(ctx, {
@@ -281,9 +387,84 @@
         }
     });
 </script>
+
+
+
+
+
+
+<script>
+    const adsCtx = document.getElementById('ads-skills-chart').getContext('2d');
+    const adsSkillsChart = new Chart(adsCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Programação', 'Banco de Dados', 'Desenvolvimento Web', 'Desenvolvimento Mobile', 'Análise de Sistemas'],
+            datasets: [{
+                label: 'Habilidades',
+                data: [90, 85, 80, 75, 70],
+                backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+
+
+
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+
+
+
+
 <script>
     AOS.init();
 </script>
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var typed = new Typed("#typed", {
+        strings: ['<span style="color: #4dedff; filter: drop-shadow(2px 4px 27px #b5f8ff87);">Sistemas de Informação</span>',
+                  '<span style="color: #ff3d66; filter: drop-shadow(2px 4px 27px #fca9a96e);">Análise e Desenvolvimento de Sistemas</span>'],
+        typeSpeed: 25,
+        backSpeed: 10,
+        backDelay: 3000,
+        startDelay: 0,
+        loop: true
+    });
+});
+</script>
+
+<script>
+    window.addEventListener('scroll', function() {
+    var meuBotao = document.getElementById('discover');
+    var pontoDeMudanca = 3300; // Valor de pixels onde você quer que a cor mude
+
+    if (window.scrollY >= pontoDeMudanca
+    ) {
+        meuBotao.classList.add('scrolled'); // Adiciona a classe quando passa do ponto
+    } else {
+        meuBotao.classList.remove('scrolled'); // Remove a classe se rolar para cima
+    }
+});
+</script>
+
+
+
+
 </body>
 </html>

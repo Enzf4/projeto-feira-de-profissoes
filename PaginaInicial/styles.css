@@ -66,7 +66,6 @@
         nav.scrolled {
             background-color: #121214;
             border-bottom: 1px solid #1e1d20;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
         }
 
         .logo {
@@ -193,6 +192,7 @@
             max-width: 100vw;
             contain: content;
             border-bottom: 1px solid #1e1d20;
+            
         }
 
         .partnership img {
@@ -207,6 +207,7 @@
             padding: 0 2rem;
             font-weight: 300;
             filter: drop-shadow(0px 0px 10px #00bbff77);
+
         }
 
         .main-container {
@@ -264,8 +265,23 @@
             box-shadow: #1f7c815d 0px 0px 30px 0px;
         }
 
+        .course-title-div2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: aliceblue;
+            font-size: 3rem;
+            text-align: center;
+            border-radius: 1rem;
+            background: url(assets/AdsDivBackground.jpg);
+            background-size: cover;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: #1f7c815d 0px 0px 30px 0px;
+        }
+
         .course-title-div img{
-           filter: blur(40);
+            filter: blur(40);
         }
 
         .glider-contain {
@@ -294,6 +310,13 @@
             max-width: 300px;
             height: auto;
             border-radius: 1rem;
+        }
+
+        .gliderads img{
+            box-shadow: #d4343422 0px 0px 30px 0px;
+        }
+
+        .glidersi img{
             box-shadow: #1fcad31b 0px 0px 30px 0px;
         }
 
@@ -312,6 +335,30 @@
 
         .glider-dot.active {
             background: #1fcad3;
+        }
+
+        #dotsads .glider-dot.active{
+            background: #f34870;
+        }
+
+        #discover.scrolled{
+            border-color: #ff4a71;
+            transition: all 0.5s ease;
+        }
+
+        #discover
+        {
+            border-color: #1ecad3;
+            transition: all 0.5s ease;
+        }
+
+        #oportunities, #oportunitiesADS{
+            justify-content: flex-start;
+            padding: 0rem;
+        }
+
+        .career-list li{
+            font-size: 1.3rem;
         }
 
         @media screen and (max-width: 768px) {
@@ -554,6 +601,50 @@
         #contact-form button:hover {
             background-color: #18a2a9;
         }
+
+        .course-title-div2 {
+            background: url(assets/AdsDivBackground.jpg);
+            box-shadow: rgba(239, 55, 95, 0.167) 0px 0px 30px 0px;
+        }
+        
+        
+        #ads-career .career-list li::before {
+            color: #ff4a71;
+        }
+        
+        
+        #ads-course button:hover,
+        #ads-career button:hover {
+            box-shadow: rgba(255, 99, 132, 0.348) 0px 0px 80px 0px;
+        }
+
+.typed-cursor {
+    opacity: 1;
+    animation: typedjsBlink 0.7s infinite;
+    -webkit-animation: typedjsBlink 0.7s infinite;
+    animation: typedjsBlink 0.7s infinite;
+}
+
+#typed{
+    font-size: 3rem;
+}
+
+@keyframes typedjsBlink {
+    50% { opacity: 0.0; }
+}
+
+@-webkit-keyframes typedjsBlink {
+    0% { opacity: 1; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1; }
+}
+
+.typed-fade-out {
+    opacity: 0;
+    transition: opacity .25s;
+    -webkit-animation: 0;
+    animation: 0;
+}
         
         @media screen and (max-width: 768px) {
             .course-highlights, .testimonials-container {
