@@ -11,10 +11,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
-<body>
+<body id="body">
     <nav id="navbar">
         <div class="logo"><a href="https://unisanta.br/"><img id="logo" src="assets/logo-vertical-branco.png" alt="Logo"></a></div>
         <div class="nav-items">
@@ -26,7 +27,9 @@
     <section class="hero">
         <div class="hero-container">
             <div class="column-left">
-                <h1 id="h1">Conheça o curso de <span id="typed"></span></h1>
+                <div id="column-left-text">
+                    <h1 id="h1">Conheça o curso de <span id="typed"></span></h1>
+                </div>
                 <button id="button">Conheça na Prática</button>
             </div>
             <div class="column-right">
@@ -193,9 +196,12 @@
             <h1 class="header1">De aluno para aluno</h1>
             <div class="testimonials-container">
                 <div class="testimonial">
-                    <img src="assets/827448_dark background, coding screen, software, programm_xl-1024-v1-0.png" alt="Estudante 1">
-                    <p>"O curso de S.I da Unisanta me abriu portas para o mercado de trabalho antes mesmo da formatura!"</p>
-                    <h4>Maria Silva, 7º semestre</h4>
+                    <img src="assets/testemunho1.png" alt="Estudante 1">
+
+                    <p>"Iniciei como QA trainee na Fcamara de Santos, trabalhando com clientes como Unimed do Brasil e Lopes Imobiliária. Depois, atuei como QA pleno no SuperApp da Porto Seguro pela Zup em home office. Na mesma consultoria, trabalhei quase dois anos no Itaú em projetos do agronegócio. Atualmente, sou QA Senior na Zup, focado no produto Vivo Easy, realizando testes de software e automatizando testes de API, E2E e Mobile. Já ministrei palestras e mentorias na área, incluindo uma na Universidade Santa Cecília, onde me formei."
+                    </p>
+                    <h3>Murillo Santos Barbosa</h3>
+                    <h4>Formado em Sistemas de Informação</h4>
                 </div>
                 <div class="testimonial">
                     <img src="assets/827448_dark background, coding screen, software, programm_xl-1024-v1-0.png" alt="Estudante 2">
@@ -204,17 +210,48 @@
                 </div>
             </div>
         </section>
-
-        <div class="structure" id="structure">
-            <div class="structure-column-left">
-                <h1>Estrutura</h1>
-                <p>A Universidade Santa Cecília possui uma infraestrutura moderna e completa, projetada para proporcionar o melhor ambiente de aprendizado aos seus alunos. Possui laboratórios equipados com tecnologias avançadas, incluindo impressoras 3D que podem ser usadas para projetos e pesquisas. A Unisanta oferece tudo o que os estudantes precisam para uma formação de excelência.</p>
-            </div>
-            <div class="structure-column-right">
-                <img src="assets/estrutura.jpg" alt="Estrutura da Universidade">
-            </div>
-        </div>
     </div>
+    <br><br><br><br><br><br>
+    <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Cursos</h3>
+            <ul>
+              <li><a href="#si-course">Sistemas de Informação</a></li>
+              <li><a href="#ads-course">Análise e Desenvolvimento de Sistemas</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Links Rápidos</h3>
+            <ul>
+              <li><a href="#">Sobre a Unisanta</a></li>
+              <li><a href="#">Processo Seletivo</a></li>
+              <li><a href="#">Notícias</a></li>
+              <li><a href="#">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contato</h3>
+            <p>Rua Oswaldo Cruz, 277 - Boqueirão</p>
+            <p>Santos - SP, 11045-907</p>
+            <p>Telefone: (13) 3202-7100</p>
+            <p>Email: info@unisanta.br</p>
+          </div>
+          <div class="footer-section">
+            <h3>Redes Sociais</h3>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+              </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Universidade Santa Cecília. Todos os direitos reservados.</p>
+        </div>
+      </footer>
 
 
 
@@ -314,49 +351,130 @@ window.addEventListener('scroll', function() {
 
 
 <script>
-    particlesJS("particles-js", {
-        particles: {
-            number: { value: 65, density: { enable: true, value_area: 800 } },
-            color: { value: "#ffffff" },
-            shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
-            opacity: { 
-                value: 0.3,  
-                random: false,
-                anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
-            },
-            size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: "#a9fcea",
-                opacity: 0.3, 
-                width: 1
-            },
-            move: {
-                enable: true,
-                speed: 0.5, 
-                direction: "none",
-                random: false,
-                straight: false,
-                out_mode: "out",
-                bounce: false,
-                attract: { enable: false, rotateX: 600, rotateY: 1200 }
-            }
-        },
-        interactivity: {
-            detect_on: "canvas",
-            events: {
-                onhover: { enable: true, mode: "repulse" },
-                onclick: { enable: true, mode: "push" },
-                resize: true
-            },
-            modes: {
-                repulse: { distance: 200, duration: 0.4 },
-                push: { particles_nb: 4 }
-            }
-        },
-        retina_detect: true
+// Inicializa as partículas
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 70, density: { enable: true, value_area: 800 } },
+    color: { value: "#ffffff" },
+    shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+    opacity: {
+      value: 0.2,  
+      random: false,
+      anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
+    },
+    size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: "#a9fcea",
+      opacity: 0.3,
+      width: 1
+    },
+    move: {
+      enable: true,
+      speed: 0.5,
+      direction: "none",
+      random: false,
+      straight: false,
+      out_mode: "out",
+      bounce: false,
+      attract: { enable: false, rotateX: 600, rotateY: 1200 }
+    }
+  },
+  interactivity: {
+    detect_on: "canvas",
+    events: {
+      onhover: { enable: true, mode: "repulse" },
+      onclick: { enable: true, mode: "push" },
+      resize: true
+    },
+    modes: {
+      repulse: { distance: 200, duration: 0.4 },
+      push: { particles_nb: 4 }
+    }
+  },
+  retina_detect: true
+});
+
+// Função para mudar a cor das partículas
+function changeParticlesColor(newColor) {
+  if (!window.pJSDom || !window.pJSDom[0] || !window.pJSDom[0].pJS) {
+    console.error("Particles.js não está inicializado corretamente.");
+    return;
+  }
+
+  const pJS = window.pJSDom[0].pJS;
+  
+  // Atualiza a cor das partículas na configuração
+  pJS.particles.color.value = newColor;
+  pJS.particles.line_linked.color = newColor;
+
+  // Atualiza a cor de todas as partículas existentes
+  if (pJS.particles && pJS.particles.array) {
+    pJS.particles.array.forEach((particle) => {
+      particle.color = {value: newColor};
+      particle.color.rgb = hexToRgb(newColor);
     });
+  }
+
+  // Atualiza a cor das linhas
+  if (pJS.particles && pJS.particles.line_linked) {
+    pJS.particles.line_linked.color = newColor;
+    pJS.particles.line_linked.color_rgb_line = hexToRgb(newColor);
+  }
+
+  // Solicita uma atualização do canvas
+  if (pJS.fn && pJS.fn.particlesRefresh) {
+    pJS.fn.particlesRefresh();
+  }
+}
+
+// Função auxiliar para converter cor hex para RGB
+function hexToRgb(hex) {
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+
+// Variável para armazenar a última cor aplicada
+let lastAppliedColor = "#ffffff";
+
+// Função throttle para limitar a frequência de chamadas da função de mudança de cor
+function throttle(func, limit) {
+  let inThrottle;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  }
+}
+
+// Adiciona o evento de scroll com throttle
+window.addEventListener('scroll', throttle(function() {
+  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  
+  let newColor;
+  if (scrollPosition >= 3050) {
+    newColor = "#fc1e38"; // Vermelho quando o scroll atingir ou ultrapassar 3300
+  } else {
+    newColor = "#6bf8ff"; // Branco quando o scroll estiver abaixo de 3300
+  }
+
+  // Só aplica a mudança se a cor for diferente da última aplicada
+  if (newColor !== lastAppliedColor) {
+    changeParticlesColor(newColor);
+    lastAppliedColor = newColor;
+  }
+}, 100)); // Limita a execução a uma vez a cada 100ms
 </script>
 
 
@@ -453,7 +571,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
     window.addEventListener('scroll', function() {
     var meuBotao = document.getElementById('discover');
-    var pontoDeMudanca = 3300; // Valor de pixels onde você quer que a cor mude
+    var pontoDeMudanca = 3050; // Valor de pixels onde você quer que a cor mude
 
     if (window.scrollY >= pontoDeMudanca
     ) {
@@ -464,6 +582,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<script>
+    window.addEventListener('scroll', function() {
+        var pontoDeMudanca = 100; // Valor de pixels onde você quer que o blur ocorra
+        if (window.scrollY >= pontoDeMudanca) {
+            document.body.classList.add('scrolled'); // Adiciona a classe ao body
+        } else {
+            document.body.classList.remove('scrolled'); // Remove a classe ao rolar para cima
+        }
+    });
+</script>
 
 
 
