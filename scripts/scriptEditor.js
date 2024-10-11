@@ -3,7 +3,7 @@ let inputh2 = document.getElementById("inputH2");
 let inputdesc = document.getElementById("inputDesc");
 let inputdescimg = document.getElementById("inputDescImg");
 let inputimg = document.getElementById("inputImg");
-let continuarBtn = document.getElementById("continuar");
+let continuarBtn = document.getElementById("completou");
 
 // Seleciona o elemento HTML que exibirá o link da imagem como uma string
 let imgSrcElement = document.getElementById("imgSrc");
