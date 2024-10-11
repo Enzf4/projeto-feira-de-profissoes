@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin</title>
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Login para o painel de administração</h1>
+    <form>
+        <div id="mensagem_erro"></div>
+        <input placeholder="Nome"  name="nome"  id="nome"  minlength="3" maxlength="12" autocomplete="off" required>
+        <input placeholder="Senha" name="senha" id="senha" minlength="6" maxlength="12" autocomplete="off" required>
+        <button type="submit" id="botao">Login</button>
+    </form>
+
+    <script>
+        document.getElementById('botao').addEventListener('click', async (event) => {
+            event.preventDefault();
+
+            const nome  = document.getElementById('nome').value;
+            const senha = document.getElementById('senha').value;
+
+            const baseUrl = 'https://feiraprofissoesunisanta2024-2-backend.onrender.com/adm';
+
+            let res = await fetch(baseUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nome, senha })
+            });
+
+            if (!res.ok) {
+                const dados = await res.json();
+                document.getElementById('mensagem_erro').innerHTML = dados.error;
+                return;
+            }
+
+            sessionStorage.setItem('isAdminLoggedIn', 'true');
+            window.location.href = 'painel-adm.html';
+        });
+    </script>
+</body>
+</html>

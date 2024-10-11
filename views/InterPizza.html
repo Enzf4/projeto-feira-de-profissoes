@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../PaginaInicial/assets/logo-cavalo-branco.ico"/>
+    <link rel="stylesheet" href="../styles/InterPizza.css">
+    <title>Fase Pizza</title>
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="main">
+
+        <div id="container">
+            <!-- Título --> 
+            <h1>Fase 4 - Manipulação de Variáveis</h1>
+
+            <!-- Imagem --> 
+            <img src="../assets/IterPizzavariaveis.png" alt="foto css">
+
+            <!--Descrição --> 
+            <p>Nessa fase há um trecho de código JavaScript que precisa ser corrigido, você deve preencher os preços corretos das pizzas nas caixas de entrada ao lado de cada variável e em baixo deverá colocar as somas das variáveis.</p>
+        </div>
+    </div>
+
+    <script>
+        console.log("ID do usuario:", sessionStorage.getItem("userId"));
+  
+        // Verifica se o usuário está logado
+        if (sessionStorage.getItem("userId") === null) {
+          alert("Você precisa estar logado para acessar esta página.");
+          window.location.href = "./index.html";
+        }
+  
+        const userId = sessionStorage.getItem("userId");
+        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
+  
+        socket.on("redirecionar", (fase) => {
+          if (fase === 8) {
+            window.location.href = "./pizza.html";
+          } else if ( fase === 6){
+            window.location.href = "./carrinho.html";
+          }
+        });
+      </script>
+</body>
+</html>

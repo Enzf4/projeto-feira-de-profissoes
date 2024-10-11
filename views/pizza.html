@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase Pizza</title>
+    <link rel="stylesheet" href="../styles/stylePizza.css">
+    <link rel="shortcut icon" href="../PaginaInicial/assets/logo-cavalo-branco.ico"/>
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+    <script src="../scripts/scriptPizza.js" async></script>
+</head>
+<body>
+    <div id="shadow">
+        <div id="carrinho-compras">
+            <h1>Carrinho</h1>
+
+            <div id="pizzaAlinhamento">
+                <img class="imgpizza" src="../assets/pizza.png" alt="pizza"> <p>R$40</p>
+            </div>
+
+            <div id="pizzaAlinhamento">
+                <img class="imgpizza" src="../assets/pizza.png" alt="pizza"> <p>R$35</p>
+            </div>
+
+            <div id="pizzaAlinhamento">
+                <img class="imgpizza" src="../assets/pizza.png" alt="pizza"> <p>R$45</p>
+            </div>
+        
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <span class="close" id="fecharPopup">&times;</span>
+                    <h2>Dica</h2>
+
+                    <p>Insira os preços: pizza 1 = R$40,</p> 
+                    <p>pizza 2 = R$35 </p>
+                    <p>Calcule corretamente o total das pizzas pizza1 + pizza2 + pizza3... </p>
+                </div>
+            </div>
+            
+            <button id="botaoPopup">Mostrar Dica</button>
+            
+    
+
+            <input autocomplete="off" id="botao1" type="button" value="Finalizar" onclick="finalizar()">
+
+            <h2 id="mostrar">Total: </h2>
+
+            <h2 id="erro"></h2>
+        </div>
+
+        <button>Concluir</button>
+        
+        <div id="conserto">
+            <h1>Conserte o código</h1>
+
+            <pre>
+                <strong>var</strong> pizza1 = <input autocomplete="off" id="pizza1" type="text" size="1">;
+                <strong>var</strong> pizza2 = <input autocomplete="off" id="pizza2" type="text" size="1">;
+                <strong>var</strong> pizza3 = <input autocomplete="off" id="pizza3" type="text" size="1">;
+
+                <strong >var</strong> totalPizza=<input autocomplete="off" id="formula" type="text" size="20">;
+            </pre>
+
+            <h2 id="aviso1">faça o cálculo das 3 variáveis</h2>
+            <h2 id="correto">Correto! Pontuação: <span id="scoreDisplay">1000</span></h2>
+        </div>
+    </div>
+
+    <script>
+        console.log("ID do usuario:", sessionStorage.getItem("userId"));
+
+        // Verifica se o usuário está logado
+        if (sessionStorage.getItem("userId") === null) {
+            alert("Você precisa estar logado para acessar esta página.");
+            window.location.href = "./index.html";
+        }
+
+        const userId = sessionStorage.getItem("userId");
+        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
+        let tempoFase;
+
+        // Atualiza o contador com os dados do servidor
+        socket.on("atualizarContador", (contador) => {
+            tempoFase = contador;
+            document.getElementById("tempo").innerText = `Tempo: ${contador}`;
+            console.log("Tempo: ", tempoFase);
+        });
+
+        // document.getElementById("completou").addEventListener("click", async () => {
+        //     const nomeColuna = "tempo_fase4"; //MUDAR DE ACORDO COM O NOME DA COLUNA DO BANCO
+
+        //     if (userId) {
+        //         const baseUrl = 'https://feiraprofissoesunisanta2024-2-backend.onrender.com/usuario';
+
+        //         try {
+        //             const res = await fetch(baseUrl, {
+        //             method: "PUT",
+        //             headers: {
+        //                 "Content-Type": "application/json",
+        //             },
+        //             body: JSON.stringify({ userId, nomeColuna, tempoFase }),
+        //             });
+
+        //             if (!res.ok) throw new Error((await res.json()).error);
+        //         } catch (error) {
+        //             console.error("Error:", error);
+        //         }
+        //     }
+        // });
+
+        // Redireciona para a próxima fase se o administrador mudar a fase
+        socket.on("redirecionar", (fase) => {
+            if (fase === 9) {
+                window.location.href = "./InterIteração.html";
+            } else if (fase === 7){
+                window.location.href = "./InterPizza.html";
+            }
+        });
+    </script>
+</body>
+</html>

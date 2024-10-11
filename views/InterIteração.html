@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/InterIteraçao.css">
+    <title>Fase Iteração</title>
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="main">
+
+        <div id="container">
+            <!-- Título --> 
+            <h1>Fase 5 - Iteração</h1>
+
+            <!-- Imagem --> 
+            <img src="../assets/iteração.jpg" alt="imagem de Iteração">
+
+            <!-- Descrição --> 
+            <p>Iteração é um processo no qual você soma valores repetidamente em um loop. Isso é comumente usado para calcular a soma de uma série de números ou para acumular valores ao longo de uma iteração em uma estrutura de dados, como uma lista</p>
+
+            <p>Nessa Fase seu objetivo é escolher um melhor valor para a iteração do deslocamento do seu personagem.</p>
+        </div>
+
+    </div>
+
+    <script>
+        console.log("ID do usuario:", sessionStorage.getItem("userId"));
+  
+        // Verifica se o usuário está logado
+        if (sessionStorage.getItem("userId") === null) {
+          alert("Você precisa estar logado para acessar esta página.");
+          window.location.href = "../index.html";
+        }
+  
+        const userId = sessionStorage.getItem("userId");
+        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
+  
+        socket.on("redirecionar", (fase) => {
+          if (fase === 10) {
+            window.location.href = "./Iteração.html";
+          }else if (fase === 8){
+            window.location.href = "./pizza.html";
+          }
+        });
+      </script>
+  
+</body>
+</html>

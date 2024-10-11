@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/InterFilme.css">
+    <title>Fase Filmes</title>
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="main">
+
+        <div id="container">
+            <!-- Título --> 
+            <h1>Fase 2 - Filmes e CSS</h1>
+
+            <!-- Imagem --> 
+            <img src="https://i.pinimg.com/474x/6b/86/40/6b8640e0883fcdf4ad8162c530b30b39.jpg" alt="Filme">
+
+            <!-- Descrição --> 
+            <p>Nesta fase você manipulará as dimensões do poster de um filme de sua escolha alterando um trecho do código de estilos da página. </p>
+        </div>
+    </div>
+<script>
+    console.log("ID do usuario:", sessionStorage.getItem("userId"));
+
+    // Verifica se o usuário está logado
+    if (sessionStorage.getItem("userId") === null) {
+      alert("Você precisa estar logado para acessar esta página.");
+      window.location.href = "./index.html";
+    }
+
+    const userId = sessionStorage.getItem("userId");
+    const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
+
+    socket.on("redirecionar", (fase) => {
+      if (fase === 4) {
+        window.location.href = "./Filmes.html";
+      } else if (fase ===  2){
+        window.location.href = "./Editor.html";
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Satisfy&display=swap');
+
+    *{
+        font-family: 'Poppins', sans-serif;
+        transition: all 0.3s ease;
+        overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar{
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #000000;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #22212b;
+        border-radius: 2px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #3d3c4a;
+    }
+    
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus{
+        outline: none;
+    }
+
+    input,
+    textarea,
+    button,
+    select,
+    a{
+        -webkit-tap-highlight-color: transparent;
+    }
+
+
+
+    img{
+        height: 300px;
+        border-radius: 15px;
+        margin-left: 5px;
+    }
+
+    #continuar{
+        background-color: transparent;
+        border-style: solid;
+        padding: 0.5rem 1rem;
+        border: 2px solid #1fcad3;
+        border-radius: 10px;
+        color: aliceblue;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+        transition: all 0.2s ease;
+    }
+
+    #continuar:hover{
+        box-shadow: rgba(240, 248, 255, 0.182) 0px 0px 30px 0px;
+    }
+    
+    a{
+        text-decoration: none;
+    }
+
+    #inputs{
+        display: flex;
+        flex-direction: column;
+        width: vw;
+        border-right: 3px solid #1e1d20;
+        padding-left: 2rem;
+    }
+
+    .direita{
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        gap: 15px;
+        padding-left: 2rem;
+        font-size: 0.5rem;
+        word-wrap: break-word;
+        color: #818080;
+    }
+
+    #codigo{
+        color: aliceblue;
+        font-size: 2rem;
+    }
+
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #titulo{
+        text-align: center;
+        font-size: 40px;
+    }
+
+    .h{
+        font-size: 1.2rem;
+    }
+
+    input{
+        border-color: #ffffff15;
+        border-style: solid;
+        border-width: 3px;
+        background-color: transparent;
+        border-radius: 10px;
+        color: #EEEEEE;
+        padding: 5px 10px;
+        width: 400px;
+        height: 25px;
+        font-size: 1rem;
+    }
+
+    body{
+        background-color: #121214;
+        color: aliceblue;
+    }
+
+    #pagina{
+        background-color: aliceblue;
+        color: black;
+        width: 500px;
+        word-wrap: break-word;
+        padding: 0rem 2rem
+    }
+
+    .fundo{
+        display: flex;
+        align-items: center;
+        width: 100vw;
+        background-color: aliceblue;
+        min-height:60vh;
+        max-height:80vh;
+    }

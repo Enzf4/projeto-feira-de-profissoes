@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro</title>
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+    <link
+      rel="shortcut icon"
+      href="../PaginaInicial/assets/logo-cavalo-branco.ico"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Login para o jogo</h1>
+    <form>
+      <div id="mensagem_erro"></div>
+      <input
+        placeholder="Nome"
+        name="nome"
+        id="nome"
+        minlength="3"
+        maxlength="12"
+        autocomplete="off"
+        required
+      />
+      <input
+        placeholder="Senha"
+        name="senha"
+        id="senha"
+        minlength="6"
+        maxlength="12"
+        autocomplete="off"
+        required
+      />
+      <button type="submit" id="botao">Jogar</button>
+    </form>
+
+    <script>
+      document.getElementById("botao").addEventListener("click", async (event) => {
+          event.preventDefault();
+
+          const nome = document.getElementById("nome").value;
+          const senha = document.getElementById("senha").value;
+          const baseUrl = 'https://feiraprofissoesunisanta2024-2-backend.onrender.com/usuario';
+          const mensagemErro = document.getElementById("mensagem_erro");
+
+          try {
+            const res = await fetch(baseUrl, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ nome, senha }),
+            });
+
+            if (!res.ok) throw new Error((await res.json()).error);
+
+            const resUsuario = await fetch(`${baseUrl}?nome=${nome}`);
+
+            if (!resUsuario.ok)
+              throw new Error((await resUsuario.json()).error);
+
+            const { infoUsuario } = await resUsuario.json();
+            sessionStorage.setItem("userId", infoUsuario.id);
+            window.location.href = "./InterEditor.html";
+          } catch (error) {
+            mensagemErro.innerText = error.message;
+            console.error("Error:", error);
+          }
+        });
+    </script>
+
+    <!--    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Satisfy&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #22212b;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3d3c4a;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus{
+    outline: none;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 80vh;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    border-style: solid;
+    border-radius: 15px;
+    padding: 2rem 2rem;
+    border-width: 2px;
+    border-color: #1fcad3;
+    box-shadow: #dbf4fd2e 0px 0px 80px 0px;
+}
+
+input,
+textarea,
+button,
+select,
+a{
+    -webkit-tap-highlight-color: transparent;
+}
+
+#usuarioBtn, #continuar{
+    background-color: transparent;
+    border-style: solid;
+    padding: 0.5rem 1rem;
+    border: 2px solid #1fcad3;
+    border-radius: 10px;
+    color: aliceblue;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 150px;
+}
+
+.botoes{
+    display: flex;
+    gap: 2rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+input{
+    border-color: #22212b;
+    border-style: solid;
+    border-width: 3px;
+    background-color: transparent;
+    border-radius: 15px;
+    color: #EEEEEE;
+    padding: 5px 10px;
+    width: 400px;
+    height: 50px;
+    font-size: 1.5rem;
+}
+
+body{
+    background-color: #121214;
+    color: aliceblue;
+}
+
+    </style>
+-->
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase Filmes</title>
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="../styles/stylesFilmes.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../scripts/scriptFilmes.js" async></script>
+</head>
+<body>
+
+    <h1 id="pagetitle">Pesquise por um filme que goste!</h1>
+
+    <div class="search">
+        <input autocomplete="off" type="text" id="query"/><button id="searchBtn">Pesquisar</button></div>
+
+    <div class="movies">
+
+        <img src="" alt="" class="posters" id="poster">
+
+        <img src="" alt="" class="posters" id="poster2">
+
+    </div>
+
+    <div class="box">
+        <h1 id="desafio">Desafio</h1>
+        <h1 id="instruc">Iguale o tamanho das imagens alterando a propriedade "height" do poster.</h1>
+        <div class="userInput">
+            <pre>
+                #poster{
+                        height: <input autocomplete="off" type="text" id="inputSize"/> px;}
+            </pre>
+        </div>
+
+        <h2 id="acerto">Correto! Pontuação: <span id="scoreDisplay">1000</span></h2>
+
+        <button>Concluir</button>
+    </div>
+    
+    <br><br>
+
+    <script>
+        console.log("ID do usuario:", sessionStorage.getItem("userId"));
+
+        // Verifica se o usuário está logado
+        if (sessionStorage.getItem("userId") === null) {
+            alert("Você precisa estar logado para acessar esta página.");
+            window.location.href = "./index.html";
+        }
+
+        const userId = sessionStorage.getItem("userId");
+        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
+        let tempoFase;
+
+        // Atualiza o contador com os dados do servidor
+        socket.on("atualizarContador", (contador) => {
+            tempoFase = contador;
+            document.getElementById("tempo").innerText = `Tempo: ${contador}`;
+            console.log("Tempo: ", tempoFase);
+        });
+
+        // document.getElementById("completou").addEventListener("click", async () => {
+        //     const nomeColuna = "tempo_fase2"; //MUDAR DE ACORDO COM O NOME DA COLUNA DO BANCO
+
+        //     if (userId) {
+        //         const baseUrl = 'https://feiraprofissoesunisanta2024-2-backend.onrender.com/usuario';
+
+        //         try {
+        //             const res = await fetch(baseUrl, {
+        //             method: "PUT",
+        //             headers: {
+        //                 "Content-Type": "application/json",
+        //             },
+        //             body: JSON.stringify({ userId, nomeColuna, tempoFase }),
+        //             });
+
+        //             if (!res.ok) throw new Error((await res.json()).error);
+        //         } catch (error) {
+        //             console.error("Error:", error);
+        //         }
+        //     }
+        // });
+
+        // Redireciona para a próxima fase se o administrador mudar a fase
+        socket.on("redirecionar", (fase) => {
+            if (fase === 5) {
+                window.location.href = "./InterCarrinho.html";
+            } else if(fase === 3){
+                window.location.href = "./InterFilme.html";
+            }
+        });
+    </script>
+</body>
+</html>

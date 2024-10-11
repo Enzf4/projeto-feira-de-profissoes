@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placar</title>
+    <link rel="shortcut icon" href="../PaginaInicial/assets/logo-cavalo-branco.ico"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script src="http://localhost:8383/socket.io/socket.io.js"></script>
+
+</head>
+<body>
+        <div>
+            <h1 id="h1Placar">Placar</h1>
+            <button id="continuar" disabled>Continuar</button>
+        </div>
+    
+        <div id="div_lista"></div>
+    
+        <!--
+        <a id="linkProximaFase" href="../Fase Filmes/InterFilme.html"><button id="placarContinuar">Continuar</button></a>
+    -->
+
+        <button id="usuarioBtn" disabled>Registrar</button>
+        <input type="text" id="usuario"/>
+    </div>
+    <script>
+        console.log('ID do usuario:',sessionStorage.getItem('userId'));
+
+// Verifica se o usuário está logado
+if (sessionStorage.getItem('userId') === null) {
+alert('Você precisa estar logado para acessar esta página.');
+window.location.href = '../ScriptDB/index.html';
+}
+
+const userId = sessionStorage.getItem('userId');
+const socket = io('http://localhost:8383', { query: { userId } });
+
+socket.on('redirecionar', (fase) => {
+if (fase === 4) {
+window.location.href = '../views/InterFilme.html';
+}else if(fase === 3){
+    window.location.href = '../views/Editor.html';
+}
+});
+    
+</script>
+    
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Satisfy&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#continuar, #usuario, #usuarioBtn{
+    display: none;
+}
+
+#h1Placar{
+    font-size: 4rem;    
+}
+
+#div_lista{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+td {
+    border: 2px solid #27262f;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 5px;
+    padding: 0.5rem 0rem;
+}
+
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #22212b;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3d3c4a;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus{
+    outline: none;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    border-style: solid;
+    border-radius: 15px;
+    padding: 2rem 2rem;
+    border-width: 2px;
+    border-color: #1fcad3;
+    box-shadow: #dbf4fd2e 0px 0px 80px 0px;
+}
+
+input,
+textarea,
+button,
+select,
+a{
+    -webkit-tap-highlight-color: transparent;
+}
+
+#placarContinuar{
+    background-color: transparent;
+    border-style: solid;
+    padding: 0.5rem 1rem;
+    border: 2px solid #1fcad3;
+    border-radius: 10px;
+    color: aliceblue;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 150px;
+}
+
+.botoes{
+    display: flex;
+    gap: 2rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+input{
+    border-color: #22212b;
+    border-style: solid;
+    border-width: 3px;
+    background-color: transparent;
+    border-radius: 15px;
+    color: #EEEEEE;
+    padding: 5px 10px;
+    width: 400px;
+    height: 50px;
+    font-size: 1.5rem;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #121214;
+    color: aliceblue;
+    min-height: 100vh;
+    padding: 1rem 2rem;
+}
+
+    </style>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../PaginaInicial/assets/logo-cavalo-branco.ico"/>
+    <link rel="stylesheet" href="../styles/InterCarrinho.css">
+    <title>Teste Alinhamentos</title>
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="main">
+
+        <div id="container">
+            <!-- Título --> 
+            <h1>Fase 3 - Alinhamento</h1>
+
+            <!-- Imagem --> 
+            <img src="../assets/InterCarrrinhocss.png" alt="foto css">
+
+            <!--Descrição --> 
+            <p>Essa é mais uma fase envolvendo CSS (os estilos). Dessa vez, mude a posição de um carrinho de corrida alterando sua margem!</p>
+        </div>
+    </div>
+
+    <script>
+        console.log("ID do usuario:", sessionStorage.getItem("userId"));
+
+        // Verifica se o usuário está logado
+        if (sessionStorage.getItem("userId") === null) {
+          alert("Você precisa estar logado para acessar esta página.");
+          window.location.href = "./index.html";
+        }
+  
+        const userId = sessionStorage.getItem("userId");
+        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
+  
+        socket.on("redirecionar", (fase) => {
+          if (fase === 6) {
+            window.location.href = "./carrinho.html";
+          } else if (fase === 4){
+            window.location.href = "./Filmes.html";
+          }
+        });
+    </script>
+
+</body>
+</html>

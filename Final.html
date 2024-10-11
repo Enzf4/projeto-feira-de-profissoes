@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="PaginaInicial/assets/logo-cavalo-branco.ico"/>
+    <title>Final</title>
+</head>
+<body>
+
+    <div class="boxhome">
+        <h1>Obrigado por participar!</h1>
+        <a href="PaginaInicial/index.html"><button class="home">Home</button></a>
+    </div>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Satisfy&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #22212b;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3d3c4a;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus{
+    outline: none;
+}
+
+input,
+textarea,
+button,
+select,
+a{
+    -webkit-tap-highlight-color: transparent;
+}
+
+.home{
+    background-color: transparent;
+    border-style: solid;
+    padding: 0.5rem 1rem;
+    border: 2px solid #1fcad3;
+    border-radius: 10px;
+    color: aliceblue;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.boxhome{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+    text-align: center;
+}
+
+h1{
+    font-size: 3rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+#inputs{
+    display: flex;
+    flex-direction: column;
+    width: vw;
+    border-right: 3px solid #1e1d20;
+    padding-left: 2rem;
+}
+
+.direita{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 15px;
+    padding-left: 2rem;
+    font-size: 0.5rem;
+    word-wrap: break-word;
+    color: #818080;
+}
+
+#codigo{
+    color: aliceblue;
+    font-size: 2rem;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#titulo{
+    text-align: center;
+    font-size: 40px;
+}
+
+.h{
+    font-size: 1.2rem;
+}
+
+input{
+    border-color: #ffffff15;
+    border-style: solid;
+    border-width: 3px;
+    background-color: transparent;
+    border-radius: 10px;
+    color: #EEEEEE;
+    padding: 5px 10px;
+    width: 400px;
+    height: 25px;
+    font-size: 1rem;
+}
+
+body{
+    background-color: #121214;
+    color: aliceblue;
+}
+
+#pagina{
+    background-color: aliceblue;
+    color: black;
+    width: 500px;
+    word-wrap: break-word;
+    padding: 0rem 2rem
+}
+
+.fundo{
+    display: flex;
+    width: 100vw;
+    background-color: aliceblue;
+    min-height:80vh;
+}
+
+    </style>
+</body>
+</html>

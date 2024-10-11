@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste alinhamentos</title>
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="../styles/styleCarrinho.css">
+    <link rel="shortcut icon" href="../PaginaInicial/assets/logo-cavalo-branco.ico"/>
+    <script src="../scripts/scriptCarinho.js" async></script> 
+
+</head>
+<body>
+
+    <div class="centralizarinput">
+        <h1>Faça com que o carrinho cruze a linha de chegada</h1>
+    <pre>
+    .carrinho{
+        margin-left: <input autocomplete="off" id="userInput" type="text" required minlength="4" maxlength="10" size="5" oninput="moverCarrinho(this.value)"/> px;}
+    </pre>
+
+    <div>
+        <h2 id="correto">Correto! &#127881; Pontuação: <span id="scoreDisplay">1000</span></h2>
+    </div>
+
+    <div>
+        <h2 id="menos">Um pouco menos...</h2>
+    </div>
+
+    </div>
+
+    <div class="linha-chegada">
+        <div class="linhachegada">
+            <img class="chegada" src="../assets/chegadaCorrida.png" alt="final">
+        </div>
+    </div>
+
+    <img class="carrinho" id="carrinho" src="../assets/carrinho.png" alt="Carrinho">
+
+    <script>
+        console.log("ID do usuario:", sessionStorage.getItem("userId"));
+
+        // Verifica se o usuário está logado
+        if (sessionStorage.getItem("userId") === null) {
+            alert("Você precisa estar logado para acessar esta página.");
+            window.location.href = "../ScriptDB/index.html";
+        }
+
+        const userId = sessionStorage.getItem("userId");
+        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
+        let tempoFase;
+
+        // Atualiza o contador com os dados do servidor
+        socket.on("atualizarContador", (contador) => {
+            tempoFase = contador;
+            document.getElementById("tempo").innerText = `Tempo: ${contador}`;
+            console.log("Tempo: ", tempoFase);
+        });
+
+        // Redireciona para a próxima fase se o administrador mudar a fase
+        socket.on("redirecionar", (fase) => {
+            if (fase === 7) {
+                window.location.href = "./InterPizza.html";
+            } else if (fase === 5){
+                window.location.href = "./InterCarrinho.html";
+            }
+        });
+    </script>
+</body>
+</html>

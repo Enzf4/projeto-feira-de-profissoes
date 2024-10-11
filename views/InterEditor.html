@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase Editor</title>
+    <link rel="shortcut icon" href="../PaginaInicial/assets/logo-cavalo-branco.ico"/>
+    <link rel="stylesheet" href="../styles/InterEditor.css">
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="main">
+
+        <div id="container">
+            <!-- Título --> 
+            <h1>Fase 1 - Editor HTML</h1>
+
+            <!-- Imagem --> 
+            <img src="../assets/InterEditor.jpg" alt="Editor">
+
+            <!--Descrição --> 
+            <p>Essa é a fase de introdução ao HTML! Aqui, você vai aprender os conceitos básicos enquanto cria uma página simples. Insira inputs, veja a página mudar dinamicamente e confira o código que está criando.</p>
+        </div>
+    </div>
+
+    <script>
+        console.log("ID do usuario:", sessionStorage.getItem("userId"));
+
+        // Verifica se o usuário está logado
+        if (sessionStorage.getItem("userId") === null) {
+          alert("Você precisa estar logado para acessar esta página.");
+          window.location.href = "./index.html";
+        }
+
+        const userId = sessionStorage.getItem("userId");
+        const socket = io("https://feiraprofissoesunisanta2024-2-backend.onrender.com", { query: { userId } });
+
+        socket.on("redirecionar", (fase) => {
+          if (fase === 2) {
+            window.location.href = "./Editor.html";
+          }
+        });
+      </script>
+
+</body>
+</html>

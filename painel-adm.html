@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Painel Administrativo</h1>
+    <button onclick="voltarFase()">Voltar</button>
+    <button onclick="avancarFase()">Avançar</button>
+    <p>Fase atual: <span id="faseAtualDisplay">1</span></p>
+
+    <script>
+        // Verifica se o usuário está logado como admin
+        if (sessionStorage.getItem('isAdminLoggedIn') !== 'true') {
+            alert('Você precisa estar logado como administrador para acessar esta página.');
+            window.location.href = 'login-adm.html';
+        }
+
+        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com');
+        let faseAtual = 1;
+        const NUMERO_FASES = 11;
+
+        function atualizarNumeroFases() {
+            document.getElementById('faseAtualDisplay').innerHTML = `${faseAtual}`;
+        }
+
+        function voltarFase() {
+            if (faseAtual > 1) {
+                faseAtual--;
+                socket.emit('mudarFase', faseAtual);
+                atualizarNumeroFases();
+            }
+        }
+
+        function avancarFase() {
+            if (faseAtual < NUMERO_FASES) {
+                faseAtual++;
+                socket.emit('mudarFase', faseAtual);
+                atualizarNumeroFases();
+            }
+        }
+
+        function desligarContador() {
+            socket.emit('desligarContador');
+        }
+    </script>
+</body>
+</html>
