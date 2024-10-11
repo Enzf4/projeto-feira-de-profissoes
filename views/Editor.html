@@ -102,7 +102,7 @@
         // Verifica se o usuário está logado
         if (sessionStorage.getItem('userId') === null) {
             alert('Você precisa estar logado para acessar esta página.');
-            window.location.href = './index.html';
+            window.location.href = './index';
         }
     
         const userId = sessionStorage.getItem('userId');
@@ -161,9 +161,9 @@
     
         socket.on('redirecionar', (fase) => {
             if (fase === 3) {
-                window.location.href = './InterFilme.html';
+                window.location.href = './InterFilme';
             } else if (fase === 1) {
-                window.location.href = './InterEditor.html';
+                window.location.href = './InterEditor';
             }
         });
     
