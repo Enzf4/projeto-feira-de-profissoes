@@ -16,66 +16,68 @@ let img = document.querySelectorAll(".img");
 let img2 = document.querySelectorAll(".img2");
 
 function atualizarh1() {
-    h1.forEach(function(element) {
-        element.innerText = inputh1.value;
-    });
-    verificarCampos();
+  h1.forEach(function (element) {
+    element.innerText = inputh1.value;
+  });
+  verificarCampos();
 }
 
 function atualizarh2() {
-    h2.forEach(function(element) {
-        element.innerText = inputh2.value;
-    });
-    verificarCampos();
+  h2.forEach(function (element) {
+    element.innerText = inputh2.value;
+  });
+  verificarCampos();
 }
 
 function atualizardesc() {
-    desc.forEach(function(element) {
-        element.innerText = inputdesc.value;
-    });
-    verificarCampos();
+  desc.forEach(function (element) {
+    element.innerText = inputdesc.value;
+  });
+  verificarCampos();
 }
 
 function atualizardescimg() {
-    descImg.forEach(function(element) {
-        element.innerText = inputdescimg.value;
-    });
-    verificarCampos();
+  descImg.forEach(function (element) {
+    element.innerText = inputdescimg.value;
+  });
+  verificarCampos();
 }
 
 function atualizarimg() {
-    let inputImgValue = inputimg.value;
+  let inputImgValue = inputimg.value;
 
-    // Atualiza o texto do elemento com o valor inserido pelo usuário  
-    imgSrcElement.innerText = `src="${inputImgValue}"`;
+  // Atualiza o texto do elemento com o valor inserido pelo usuário
+  imgSrcElement.innerText = `src="${inputImgValue}"`;
 
-    img.forEach(function(element) {
-        element.src = inputImgValue;
-    });
+  img.forEach(function (element) {
+    element.src = inputImgValue;
+  });
 
-    verificarCampos();
+  verificarCampos();
 }
 
 function verificarCampos() {
-    if (inputh1.value && inputh2.value && inputdesc.value && inputdescimg.value && inputimg.value) {
-        continuarBtn.style.display = "block";
-    } else {
-        continuarBtn.style.display = "none";
-    }
+  if (
+    inputh1.value &&
+    inputh2.value &&
+    inputdesc.value &&
+    inputdescimg.value &&
+    inputimg.value
+  ) {
+    continuarBtn.style.display = "block";
+  } else {
+    continuarBtn.style.display = "none";
+  }
 }
 
+inputh1.addEventListener("input", atualizarh1);
+inputh2.addEventListener("input", atualizarh2);
+inputdesc.addEventListener("input", atualizardesc);
+inputdescimg.addEventListener("input", atualizardescimg);
+inputimg.addEventListener("input", atualizarimg);
 
-
-inputh1.addEventListener('input', atualizarh1);
-inputh2.addEventListener('input', atualizarh2);
-inputdesc.addEventListener('input', atualizardesc);
-inputdescimg.addEventListener('input', atualizardescimg);
-inputimg.addEventListener('input', atualizarimg);
-
-
-
-window.addEventListener("load", function() {
-    const pontuacaoEditor = 500;
-    editorId = localStorage.getItem('game_id');
-    update_game(editorId, pontuacaoEditor);
-})
+window.addEventListener("load", function () {
+  const pontuacaoEditor = 500;
+  editorId = localStorage.getItem("game_id");
+  update_game(editorId, pontuacaoEditor);
+});
