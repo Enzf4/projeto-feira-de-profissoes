@@ -43,6 +43,7 @@
       <h2 id="acerto">Correto!</h2>
 
       <button id="completou">Finalizar</button>
+      <p id="tempo"> Tempo: 0</p>
     </div>
 
     <br /><br />
@@ -71,35 +72,42 @@
         }
       });
 
-      document
-        .getElementById("completou")
-        .addEventListener("click", async () => {
-          const nomeColuna = "tempo_fase2";
-          faseCompleta = true;
-          document.getElementById(
-            "tempo"
-          ).innerText = `Finalizou em: ${tempoFase}`;
-          let completou = document.getElementById("completou");
-          completou.disabled = true;
-          completou.style.opacity = "0.5";
-          completou.style.cursor = "default";
+        // COMPLETOU A FASE
+        document.getElementById("completou").addEventListener('click', async () => {
+            const nomeColuna = 'tempo_fase2';
+            faseCompleta = true;
+    
+            // Exibe o tempo finalizado
+            document.getElementById('tempo').innerText = `Finalizou em: ${tempoFase}`;
+            
+            // Desativa o botão após ser clicado
+            let completou = document.getElementById("completou")
+            completou.disabled = true
 
-          if (userId) {
-            const baseUrl =
-              "https://feiraprofissoesunisanta2024-2-backend.onrender.com/usuario";
-            try {
-              const res = await fetch(baseUrl, {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ userId, nomeColuna, tempoFase }),
-              });
-              if (!res.ok) throw new Error((await res.json()).error);
-            } catch (error) {
-              console.error("Error:", error);
+            if(completou.disabled == true){
+                completou.style.opacity = "0.5";  
+                completou.style.cursor = "default";  
             }
-          }
+
+    
+            if (userId) {
+                const baseUrl = 'https://feiraprofissoesunisanta2024-2-backend.onrender.com/usuario';
+    
+                try {
+                    const res = await fetch(baseUrl, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ userId, nomeColuna, tempoFase })
+                    });
+    
+                    if (!res.ok) throw new Error((await res.json()).error);
+    
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
         });
 
         socket.on('faseAtual', (numeroFase) => {

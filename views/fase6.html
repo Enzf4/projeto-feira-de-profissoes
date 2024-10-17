@@ -13,6 +13,9 @@
 <body>
 
     <div class="centralizarinput">
+    <div>
+        <p id="tempo"> Tempo: 0</p>
+    </div>
         <h1>Faça com que o carrinho cruze a linha de chegada</h1>
     <pre>
     .carrinho{
@@ -20,7 +23,7 @@
     </pre>
 
     <div>
-        <button id="completou">Finalizar</button>
+        <h2 id="correto">Correto! &#127881; <button id="completou">Finalizar</button></h2>
     </div>
 
     <div>
@@ -49,7 +52,7 @@
         const userId = sessionStorage.getItem("userId");
         const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
         let tempoFase;
-
+        let faseCompleta = false;
         // Atualiza o contador com os dados do servidor
         socket.on("atualizarContador", (contador) => {
             tempoFase = contador;

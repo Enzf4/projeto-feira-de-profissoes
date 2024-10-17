@@ -148,3 +148,21 @@ pre{
 a{
     text-decoration: none;
 }
+
+#completou{
+    background-color: transparent;
+    border-style: solid;
+    padding: 0.5rem 1rem;
+    border: 2px solid #1fcad3;
+    border-radius: 10px;
+    color: aliceblue;
+    font-size: 20px;
+    cursor: pointer;
+    margin: auto;
+    transition: all 0.2s ease;
+  }
+
+  #tempo{
+    color: #eeeeee;
+    font-size: larger;
+  }
