@@ -67,7 +67,7 @@
 
             const { infoUsuario } = await resUsuario.json();
             sessionStorage.setItem("userId", infoUsuario.id);
-            window.location.href = "./InterEditor.html";
+            window.location.href = "./fase1";
           } catch (error) {
             mensagemErro.innerText = error.message;
             console.error("Error:", error);

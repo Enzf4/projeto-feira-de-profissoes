@@ -33,11 +33,17 @@
     const userId = sessionStorage.getItem("userId");
     const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
 
+    socket.on('faseAtual', (numeroFase) => {
+        if (numeroFase !== 3) {
+            window.location.href = `./fase${numeroFase}`;
+        }
+    })
+
     socket.on("redirecionar", (fase) => {
       if (fase === 4) {
-        window.location.href = "./Filmes.html";
+        window.location.href = "./fase4";
       } else if (fase ===  2){
-        window.location.href = "./Editor.html";
+        window.location.href = "./fase2";
       }
     });
   </script>

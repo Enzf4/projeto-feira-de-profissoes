@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fase Editor</title>
     <link rel="shortcut icon" href="../PaginaInicial/assets/logo-cavalo-branco.ico"/>
-    <link rel="stylesheet" href="../styles/InterEditor.css">
+    <link rel="stylesheet" href="../styles/InterCarrinho.css">
+    <title>Teste Alinhamentos</title>
     <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
 </head>
 <body>
@@ -13,13 +13,13 @@
 
         <div id="container">
             <!-- Título --> 
-            <h1>Fase 1 - Editor HTML</h1>
+            <h1>Fase 3 - Alinhamento</h1>
 
             <!-- Imagem --> 
-            <img src="../assets/InterEditor.jpg" alt="Editor">
+            <img src="../assets/InterCarrrinhocss.png" alt="foto css">
 
             <!--Descrição --> 
-            <p>Essa é a fase de introdução ao HTML! Aqui, você vai aprender os conceitos básicos enquanto cria uma página simples. Insira inputs, veja a página mudar dinamicamente e confira o código que está criando.</p>
+            <p>Essa é mais uma fase envolvendo CSS (os estilos). Dessa vez, mude a posição de um carrinho de corrida alterando sua margem!</p>
         </div>
     </div>
 
@@ -31,16 +31,24 @@
           alert("Você precisa estar logado para acessar esta página.");
           window.location.href = "./index.html";
         }
-
+  
         const userId = sessionStorage.getItem("userId");
-        const socket = io("https://feiraprofissoesunisanta2024-2-backend.onrender.com", { query: { userId } });
-
+        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
+  
+        socket.on('faseAtual', (numeroFase) => {
+            if (numeroFase !== 5) {
+                window.location.href = `./fase${numeroFase}`;
+            }
+        })
+  
         socket.on("redirecionar", (fase) => {
-          if (fase === 2) {
-            window.location.href = "./Editor.html";
+          if (fase === 6) {
+            window.location.href = "./fase6";
+          } else if (fase === 4){
+            window.location.href = "./fase4";
           }
         });
-      </script>
+    </script>
 
 </body>
 </html>

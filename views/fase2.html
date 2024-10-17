@@ -159,11 +159,17 @@
             }
         });
     
+        socket.on('faseAtual', (numeroFase) => {
+            if (numeroFase !== 2) {
+                window.location.href = `./fase${numeroFase}`;
+            }
+        })
+    
         socket.on('redirecionar', (fase) => {
             if (fase === 3) {
-                window.location.href = './InterFilme';
+                window.location.href = './fase3';
             } else if (fase === 1) {
-                window.location.href = './InterEditor';
+                window.location.href = './fase1';
             }
         });
     
