@@ -35,37 +35,38 @@ function finalizar() {
     let totalPizza;
     let formula = formulaInput.value.trim();
 
-    if(pizza1 != 40 || pizza2 != 35 || pizza3 != 45){
-        erro.innerText = "!! Verifique os valores inseridos !!"
-        mostrar.innerText = "Total: R$" + totalPizza;
-    }
-    else 
-        if(formula != "pizza1+pizza2+pizza3" && formula != "pizza2+pizza1+pizza3" &&
-        formula != "pizza3+pizza2+pizza1" && formula != "pizza1+pizza3+pizza2" && formula != "pizza2+pizza3+pizza1" && formula != "pizza3+pizza1+pizza2" && formula != "pizza1 + pizza2 + pizza3" && formula != "pizza2 + pizza1 + pizza3" && formula != "pizza3 + pizza2 + pizza1" && formula != "pizza1 + pizza3 + pizza2" && formula != "pizza2 + pizza3 + pizza1" && formula != "pizza3 + pizza1 + pizza2"
-        ){
-        erro.innerText = "!! Insira corretamento a formula para o cálculo !!"
-    }else{
+    if (pizza1 !== 40 || pizza2 !== 35 || pizza3 !== 45) {
+        erro.innerText = "!! Verifique os valores inseridos !!";
+        mostrar.innerText = "Total: R$" + (totalPizza || 0);
+    } else if (
+        formula !== "pizza1+pizza2+pizza3" &&
+        formula !== "pizza2+pizza1+pizza3" &&
+        formula !== "pizza3+pizza2+pizza1" &&
+        formula !== "pizza1+pizza3+pizza2" &&
+        formula !== "pizza2+pizza3+pizza1" &&
+        formula !== "pizza3+pizza1+pizza2" &&
+        formula !== "pizza1 + pizza2 + pizza3" &&
+        formula !== "pizza2 + pizza1 + pizza3" &&
+        formula !== "pizza3 + pizza2 + pizza1" &&
+        formula !== "pizza1 + pizza3 + pizza2" &&
+        formula !== "pizza2 + pizza3 + pizza1" &&
+        formula !== "pizza3 + pizza1 + pizza2"
+    ) {
+        erro.innerText = "!! Insira corretamente a fórmula para o cálculo !!";
+    } else {
         totalPizza = pizza1 + pizza2 + pizza3;
         mostrar.innerText = "Total: R$ " + totalPizza;
-        erro.innerText = "";   
+        erro.innerText = "";
+
+        // Desabilitar os campos após finalização correta
         pizza1Input.disabled = true;
         pizza2Input.disabled = true;
         pizza3Input.disabled = true;
         formulaInput.disabled = true;
         botao1.disabled = true;
-        buttonProximo.style.display = "flex";
-        aviso1.style.display = "none";
-        correto.style.display = "block";
-        if(pontos - tempo > 0){
-            const pontuacaoPizza = Math.max(pontos - tempo, 0);
-            score.innerText = pontuacaoPizza;
-            editorId = localStorage.getItem('game_id');
-            update_game(editorId, pontuacaoPizza);
-        }else{
-            const pontuacaoPizza = Math.max(pontos - tempo, 0);
-            score.innerText = pontuacaoPizza;
-            editorId = localStorage.getItem('game_id');
-            update_game(editorId, pontuacaoPizza);
-        }
+
+        // Exibir texto "correto" e botão "completou" juntos
+        correto.style.display = "flex"; // Exibir texto "Correto!"
+        aviso1.style.display = "none"; // Esconder aviso
     }
 }

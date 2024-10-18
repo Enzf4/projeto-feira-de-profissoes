@@ -62,7 +62,7 @@
             </pre>
 
             <h2 id="aviso1">faça o cálculo das 3 variáveis</h2>
-            <h2 id="correto">Correto! Pontuação: <span id="scoreDisplay">1000</span></h2>
+            <h2 id="correto">Correto! <button id="completou">Finalizar</button></h2>
         </div>
     </div>
 
@@ -78,12 +78,14 @@
         const userId = sessionStorage.getItem("userId");
         const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
         let tempoFase;
-
+        let faseCompleta = false;
         // Atualiza o contador com os dados do servidor
-        socket.on("atualizarContador", (contador) => {
-            tempoFase = contador;
-            document.getElementById("tempo").innerText = `Tempo: ${contador}`;
-            console.log("Tempo: ", tempoFase);
+        socket.on('atualizarContador', (contador) => {
+            if (!faseCompleta) {  // Somente atualiza se a fase ainda não foi completada
+                tempoFase = contador;
+                document.getElementById('tempo').innerText = `Tempo: ${contador}`;
+                console.log("Tempo: ", tempoFase);
+            }
         });
 
         // COMPLETOU A FASE

@@ -132,11 +132,30 @@ h1{
     margin-top: 2px;
 }
 
-#correto{
-    color: rgba(88, 251, 76, 0.884) ;
+#correto {
+    color: rgba(88, 251, 76, 0.884);
     font-size: 30px;
-    display: none;
+    display: none; /* Será exibido quando necessário */
     justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espaço entre o texto e o botão */
+}
+
+#completou {
+    padding: 10px;
+    width: 150px;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid var(--azul-detalhes);
+    border-radius: 15px;
+    color: var(--cor-fonte);
+    font-size: 1.3rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+#completou:hover {
+    box-shadow: rgba(240, 248, 255, 0.182) 0px 0px 30px 0px;
 }
 
 #conserto{
