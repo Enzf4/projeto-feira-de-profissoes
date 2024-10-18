@@ -11,6 +11,7 @@
 <body>
     <h1 id="tempo">0</h1>
     <h1 id="score">Pontos: 0</h1>
+    <h2 id="tempojogo">0</h2>
     <div id="gameBoard">
         <div id="player"></div>
         <div id="targetSquare"></div>
@@ -23,19 +24,20 @@
     <input id="start" type="button" value="Start" onclick="startTimer()">
     <div id="message">Tempo encerrado</div>
 
-    <h2>Pontuação Total: <span id="scoreDisplay">0</span><h2>
-    <!-- <input type="button" id="continuar" value="Continuar"> -->
-    <a href="../Firebase DB/placar5.html"><button id="continuar">Continuar</button></a>
-
+    <div class="botao-container">
+        <input id="start" type="button" value="Start" onclick="startTimer()">
+        <button id="completou">Finalizar</button>
+        <button id="botaoPopup">Mostrar Dica</button>
+    </div>
+    
     <div id="popup" class="popup">
         <div class="popup-content">
             <span class="close" id="fecharPopup">&times;</span>
-            <h2>Dica</h2>
-            <p>Utilise as setas do teclado para se movimentar </p>
+            <h2>Dica</h2><br>
+            <p>Você tem 60 seg ao clicar em start</p><br>
+            <p>Utilise as setas do teclado para se movimentar</p>
         </div>
     </div>
-    
-    <button id="botaoPopup">Mostrar Dica</button>
     
     <script>
         console.log('ID do usuario:', sessionStorage.getItem('userId'));
@@ -49,12 +51,14 @@
         const userId = sessionStorage.getItem('userId');
         const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
         let tempoFase;
-
+        let faseCompleta = false;
         // Atualiza o contador com os dados do servidor
         socket.on('atualizarContador', (contador) => {
-            tempoFase = contador;
-            document.getElementById('tempo').innerText = `Tempo: ${contador}`;
-            console.log("Tempo: ", tempoFase);
+            if (!faseCompleta) {  // Somente atualiza se a fase ainda não foi completada
+                tempoFase = contador;
+                document.getElementById('tempo').innerText = `Tempo: ${contador}`;
+                console.log("Tempo: ", tempoFase);
+            }
         });
 
         // COMPLETOU A FASE

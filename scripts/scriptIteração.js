@@ -4,7 +4,7 @@ const targetSquare = document.getElementById('targetSquare');
 const message = document.getElementById('message');
 const scoreDisplay = document.getElementById('score');
 const totalScoreDisplay = document.getElementById('scoreDisplay'); // Adicionado para exibir a pontuação total
-const temporizador = document.getElementById('tempo')
+const temporizador = document.getElementById('tempojogo')
 const valorIteração = document.getElementById('inputIteração');
 
 let jogoIniciado = false;
@@ -21,7 +21,7 @@ targetSquare.style.top = `${targetTop}px`;
 targetSquare.style.left = `${targetLeft}px`;
 
 function movePlayer(event) {
-    if (tempo < 60) {
+    if (tempojogo < 60) {
         var valor = Number(valorIteração.value);
 
         valorIteração.addEventListener('input', function() {
@@ -86,7 +86,7 @@ function checkCollision() {
             moveTarget();
         }
 
-        if (tempo === 60) {
+        if (tempojogo === 60) {
             // Atualiza a pontuação total multiplicando a pontuação atual por 15
             totalScore = score * 15;
             continuar.style.display = "flex";
@@ -117,7 +117,7 @@ document.addEventListener('keydown', movePlayer);
 
 let timer;
 let pontos = 0;
-let tempo = 0;
+let tempojogo = 0;
 
 
 // TEMPO EM SEGUNDOS + variavel de jogoIniciado
@@ -125,13 +125,23 @@ function startTimer() {
     if (!jogoIniciado) {
         jogoIniciado = true;
         timer = setInterval(function () {
-            if (tempo < 60) {
-                tempo++;
-                temporizador.innerText = `${tempo} segundos`;
-                console.log("segundos: " + tempo);
+            if (tempojogo < 60) {
+                tempojogo++;
+                temporizador.innerText = `${tempojogo} segundos`;
+                console.log("segundos: " + tempojogo);
+            } else {
+                // Quando o temporizador atinge 60 segundos, o botão "completou" aparece
+                clearInterval(timer); // Para o timer quando atingir 60 segundos
+                mostrarBotaoCompletou();
             }
         }, 1000);
     }
+}
+
+function mostrarBotaoCompletou() {
+    completou.style.display = "flex"; // Mostra o botão "completou"
+    document.getElementById('start').disabled = true; // Desativa o botão "Start"
+    document.getElementById('start').style.opacity = "0.5"; // Altera a aparência do botão desativado
 }
 
 // Mostrar o pop-up quando o botão for clicado
