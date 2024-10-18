@@ -5,11 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo</title>
     <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+    <style>
+        /* Adicionando estilo para espaçamento entre os botões */
+        #controle-fases {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Estilo para afastar o botão "Desligar Contador" dos demais */
+        #desligarContadorBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #desligarContadorBtn:hover {
+            background-color: #ff3333;
+        }
+    </style>
 </head>
 <body>
     <h1>Painel Administrativo</h1>
-    <button onclick="voltarFase()">Voltar</button>
-    <button onclick="avancarFase()">Avançar</button>
+
+    <!-- Div que agrupa os botões de controle de fase -->
+    <div id="controle-fases">
+        <button onclick="voltarFase()">Voltar</button>
+        <button onclick="avancarFase()">Avançar</button>
+    </div>
+
+    <!-- Botão desligar contador com espaçamento adequado -->
+    <button id="desligarContadorBtn" onclick="desligarContador()">Desligar Contador</button>
+
     <p>Fase atual: <span id="faseAtualDisplay">1</span></p>
 
     <script>
@@ -44,7 +74,15 @@
         }
 
         function desligarContador() {
+            // Emite evento para desligar o contador
             socket.emit('desligarContador');
+
+            // Reseta a fase atual para 1 e emite evento de mudança de fase
+            faseAtual = 1;
+            socket.emit('mudarFase', faseAtual);
+
+            // Atualiza o display para refletir a fase resetada
+            atualizarNumeroFases();
         }
     </script>
 </body>
