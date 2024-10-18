@@ -54,10 +54,12 @@
         let tempoFase;
         let faseCompleta = false;
         // Atualiza o contador com os dados do servidor
-        socket.on("atualizarContador", (contador) => {
-            tempoFase = contador;
-            document.getElementById("tempo").innerText = `Tempo: ${contador}`;
-            console.log("Tempo: ", tempoFase);
+        socket.on('atualizarContador', (contador) => {
+            if (!faseCompleta) {  // Somente atualiza se a fase ainda não foi completada
+                tempoFase = contador;
+                document.getElementById('tempo').innerText = `Tempo: ${contador}`;
+                console.log("Tempo: ", tempoFase);
+            }
         });
 
                 // COMPLETOU A FASE
