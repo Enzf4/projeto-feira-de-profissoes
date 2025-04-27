@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fase Iteração</title>
     <link rel="stylesheet" href="../styles/styleIteração.css">
-    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
     <script src="../scripts/scriptIteração.js" async></script>
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
 </head>
 <body>
     <h1 id="tempo">0</h1>
@@ -38,19 +38,23 @@
         </div>
     </div>
     
-    <script>
-        console.log('ID do usuario:', sessionStorage.getItem('userId'));
-
-        // Verifica se o usuário está logado
-        if (sessionStorage.getItem('userId') === null) {
-            alert('Você precisa estar logado para acessar esta página.');
-            window.location.href = "./index";
-        }
+    <script type="module">
+        import { BASE_API_URL } from './shared/server.js';
 
         const userId = sessionStorage.getItem('userId');
-        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
+        console.log('ID do usuario:', userId);
+
+        if (userId === null) {
+            alert('Você precisa estar logado para acessar esta página.');
+            window.location.href = './index.html';
+        }
+
+        const socket = io(BASE_API_URL, { query: { userId } });
         let tempoFase;
-        let faseCompleta = false;
+        let faseCompleta = false;  // Flag para impedir que o tempo seja atualizado após completar a fase
+
+        socket.emit('iniciarContador');
+
         // Atualiza o contador com os dados do servidor
         socket.on('atualizarContador', (contador) => {
             if (!faseCompleta) {  // Somente atualiza se a fase ainda não foi completada
@@ -62,9 +66,9 @@
 
         // COMPLETOU A FASE
         document.getElementById("completou").addEventListener('click', async () => {
-            const nomeColuna = 'tempo_fase5';
+            const nomeColuna = 'tempo_fase2';
             faseCompleta = true;
-    
+
             // Exibe o tempo finalizado
             document.getElementById('tempo').innerText = `Finalizou em: ${tempoFase}`;
             
@@ -77,41 +81,37 @@
                 completou.style.cursor = "default";  
             }
 
-    
-            if (userId) {
-                const baseUrl = 'https://feiraprofissoesunisanta2024-2-backend.onrender.com/usuario';
-    
-                try {
-                    const res = await fetch(baseUrl, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ userId, nomeColuna, tempoFase })
-                    });
-    
-                    if (!res.ok) throw new Error((await res.json()).error);
-    
-                } catch (error) {
-                    console.error('Error:', error);
-                }
+            try {
+                const response = await fetch(baseUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userId, nomeColuna, tempoFase })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.message);
+                } 
+            } catch (error) {
+                console.log(error);
             }
         });
 
-        // Redireciona para a próxima fase se o administrador mudar a fase
-
         socket.on('faseAtual', (numeroFase) => {
             if (numeroFase !== 10) {
-                window.location.href = `./fase${numeroFase}`;
+                console.log('Usuario na fase errada. Redirecionando...');
+                window.location.href = `./fase${numeroFase}.html`;
             }
         })
 
-        // Redireciona para a próxima fase se o administrador mudar a fase
         socket.on('redirecionar', (fase) => {
-            if (fase === 11) {
-                window.location.href = '../Final';
-            } else if(fase === 9){
-                window.location.href = "./fase9";
+            console.log('Admin mudou a fase. Redirecionando...');
+            if (fase == 11) {
+                window.location.href = `./Final.html`;
+            } else {
+                window.location.href = `./fase${fase}.html`;
             }
         });
     </script>

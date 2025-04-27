@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste alinhamentos</title>
-    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="../styles/styleCarrinho.css">
     <link rel="shortcut icon" href="../PaginaInicial/assets/logo-cavalo-branco.ico"/>
     <script src="../scripts/scriptCarinho.js" async></script> 
-
+    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
 </head>
 <body>
 
@@ -40,19 +39,23 @@
 
     <img class="carrinho" id="carrinho" src="../assets/carrinho.png" alt="Carrinho">
 
-    <script>
-        console.log("ID do usuario:", sessionStorage.getItem("userId"));
+    <script type="module">
+        import { BASE_API_URL } from './shared/server.js';
 
-        // Verifica se o usuário está logado
-        if (sessionStorage.getItem("userId") === null) {
-            alert("Você precisa estar logado para acessar esta página.");
-            window.location.href = "./index";
+        const userId = sessionStorage.getItem('userId');
+        console.log('ID do usuario:', userId);
+
+        if (userId === null) {
+            alert('Você precisa estar logado para acessar esta página.');
+            window.location.href = './index.html';
         }
-
-        const userId = sessionStorage.getItem("userId");
-        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
+        
+        const socket = io(BASE_API_URL, { query: { userId } });
         let tempoFase;
-        let faseCompleta = false;
+        let faseCompleta = false;  // Flag para impedir que o tempo seja atualizado após completar a fase
+
+        socket.emit('iniciarContador');
+
         // Atualiza o contador com os dados do servidor
         socket.on('atualizarContador', (contador) => {
             if (!faseCompleta) {  // Somente atualiza se a fase ainda não foi completada
@@ -62,11 +65,11 @@
             }
         });
 
-                // COMPLETOU A FASE
-            document.getElementById("completou").addEventListener('click', async () => {
-            const nomeColuna = 'tempo_fase3';
+        // COMPLETOU A FASE
+        document.getElementById("completou").addEventListener('click', async () => {
+            const nomeColuna = 'tempo_fase2';
             faseCompleta = true;
-    
+
             // Exibe o tempo finalizado
             document.getElementById('tempo').innerText = `Finalizou em: ${tempoFase}`;
             
@@ -79,40 +82,34 @@
                 completou.style.cursor = "default";  
             }
 
-    
-            if (userId) {
-                const baseUrl = 'https://feiraprofissoesunisanta2024-2-backend.onrender.com/usuario';
-    
-                try {
-                    const res = await fetch(baseUrl, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ userId, nomeColuna, tempoFase })
-                    });
-    
-                    if (!res.ok) throw new Error((await res.json()).error);
-    
-                } catch (error) {
-                    console.error('Error:', error);
-                }
+            try {
+                const response = await fetch(baseUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userId, nomeColuna, tempoFase })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.message);
+                } 
+            } catch (error) {
+                console.log(error);
             }
         });
 
         socket.on('faseAtual', (numeroFase) => {
             if (numeroFase !== 6) {
-                window.location.href = `./fase${numeroFase}`;
+                console.log('Usuario na fase errada. Redirecionando...');
+                window.location.href = `./fase${numeroFase}.html`;
             }
         })
 
-        // Redireciona para a próxima fase se o administrador mudar a fase
-        socket.on("redirecionar", (fase) => {
-            if (fase === 7) {
-                window.location.href = "./fase7";
-            } else if (fase === 5){
-                window.location.href = "./fase5";
-            }
+        socket.on('redirecionar', (fase) => {
+            console.log('Admin mudou a fase. Redirecionando...');
+            window.location.href = `./fase${fase}.html`;
         });
     </script>
 </body>

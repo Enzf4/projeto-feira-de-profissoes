@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/InterFilme.css">
     <title>Fase Filmes</title>
-    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
 </head>
 <body>
     <div id="main">
@@ -21,32 +21,30 @@
             <p>Nesta fase você manipulará as dimensões do poster de um filme de sua escolha alterando um trecho do código de estilos da página. </p>
         </div>
     </div>
-<script>
-    console.log("ID do usuario:", sessionStorage.getItem("userId"));
 
-    // Verifica se o usuário está logado
-    if (sessionStorage.getItem("userId") === null) {
-      alert("Você precisa estar logado para acessar esta página.");
-      window.location.href = "./index";
-    }
+    <script type="module">
+      import { BASE_API_URL } from './shared/server.js';
 
-    const userId = sessionStorage.getItem("userId");
-    const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
+      const userId = sessionStorage.getItem("userId");
 
-    socket.on('faseAtual', (numeroFase) => {
-        if (numeroFase !== 3) {
-            window.location.href = `./fase${numeroFase}`;
-        }
-    })
+      console.log("ID do usuario:", userId);
 
-    socket.on("redirecionar", (fase) => {
-      if (fase === 4) {
-        window.location.href = "./fase4";
-      } else if (fase ===  2){
-        window.location.href = "./fase2";
+      if (userId === null) {
+        alert("Você precisa estar logado para acessar esta página.");
+        window.location.href = "./index.html";
       }
-    });
-  </script>
 
+      const socket = io(BASE_API_URL, { query: { userId } });
+
+      socket.on('faseAtual', (numeroFase) => {
+          if (numeroFase !== 3) {
+              window.location.href = `./fase${numeroFase}.html`;
+          }
+      })
+
+      socket.on("redirecionar", (fase) => {
+        window.location.href = `./fase${fase}.html`;
+      });
+    </script>
 </body>
 </html>

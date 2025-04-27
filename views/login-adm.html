@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin</title>
-    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
 </head>
 <body>
     <h1>Login para o painel de administração</h1>
@@ -15,16 +15,18 @@
         <button type="submit" id="botao">Login</button>
     </form>
 
-    <script>
+    <script type="module">
+        import { BASE_API_URL } from './shared/server.js';
+
         document.getElementById('botao').addEventListener('click', async (event) => {
             event.preventDefault();
 
             const nome  = document.getElementById('nome').value;
             const senha = document.getElementById('senha').value;
 
-            const baseUrl = 'https://feiraprofissoesunisanta2024-2-backend.onrender.com/adm';
+            const mensagemErro = document.getElementById('mensagem_erro');
 
-            let res = await fetch(baseUrl, {
+            const response = await fetch(`${BASE_API_URL}/usuario`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -32,14 +34,14 @@
                 body: JSON.stringify({ nome, senha })
             });
 
-            if (!res.ok) {
-                const dados = await res.json();
-                document.getElementById('mensagem_erro').innerHTML = dados.error;
+            if (!response.ok) {
+                const error = await response.json();
+                mensagemErro.innerHTML = dados.error;
                 return;
             }
 
             sessionStorage.setItem('isAdminLoggedIn', 'true');
-            window.location.href = 'painel-adm';
+            window.location.href = 'painel-adm.html';
         });
     </script>
 </body>

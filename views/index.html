@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro</title>
     <link rel="stylesheet" href="../styles/styleIndex.css">
-    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
     <link
       rel="shortcut icon"
       href="../PaginaInicial/assets/logo-cavalo-branco.ico"
@@ -15,6 +14,7 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
   </head>
   <body>
     <h1>Login para o jogo</h1>
@@ -41,39 +41,47 @@
       <button type="submit" id="botao">Jogar</button>
     </form>
 
-    <script>
+    <script type="module">
+      import { BASE_API_URL } from './shared/server.js';
+
       document.getElementById("botao").addEventListener("click", async (event) => {
-          event.preventDefault();
+        event.preventDefault();
 
-          const nome = document.getElementById("nome").value;
-          const senha = document.getElementById("senha").value;
-          const baseUrl = 'https://feiraprofissoesunisanta2024-2-backend.onrender.com/usuario';
-          const mensagemErro = document.getElementById("mensagem_erro");
+        const nome = document.getElementById("nome").value;
+        const senha = document.getElementById("senha").value;
 
-          try {
-            const res = await fetch(baseUrl, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ nome, senha }),
-            });
+        const mensagemErro = document.getElementById("mensagem_erro");
 
-            if (!res.ok) throw new Error((await res.json()).error);
+        let response;
 
-            const resUsuario = await fetch(`${baseUrl}?nome=${nome}`);
+        try {
+          response = await fetch(`${BASE_API_URL}/usuario`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ nome, senha }),
+          });
 
-            if (!resUsuario.ok)
-              throw new Error((await resUsuario.json()).error);
-
-            const { infoUsuario } = await resUsuario.json();
-            sessionStorage.setItem("userId", infoUsuario.id);
-            window.location.href = "./fase1";
-          } catch (error) {
-            mensagemErro.innerText = error.message;
-            console.error("Error:", error);
+          if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message);
           }
-        });
+
+          response = await fetch(`${BASE_API_URL}/usuario?nome=${nome}`);
+
+          if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message);
+          }
+
+          const { data: user } = await response.json();
+          sessionStorage.setItem("userId", user.id);
+          window.location.href = "./fase1.html";
+        } catch (error) {
+          mensagemErro.innerText = error;
+        }
+      });
     </script>
 
     <!--    <style>

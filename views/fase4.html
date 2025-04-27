@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fase Filmes</title>
-    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="../styles/stylesFilmes.css" />
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -12,6 +11,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="../scripts/scriptFilmes.js" async></script>
+    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
   </head>
   <body>
     <h1 id="pagetitle">Pesquise por um filme que goste!</h1>
@@ -48,82 +48,78 @@
 
     <br /><br />
 
-    <script>
-      console.log("ID do usuario:", sessionStorage.getItem("userId"));
+    <script type="module">
+      import { BASE_API_URL } from './shared/server.js';
 
-      if (sessionStorage.getItem("userId") === null) {
-        alert("Você precisa estar logado para acessar esta página.");
-        window.location.href = "./index";
+      const userId = sessionStorage.getItem('userId');
+      console.log('ID do usuario:', userId);
+
+      if (userId === null) {
+          alert('Você precisa estar logado para acessar esta página.');
+          window.location.href = './index.html';
       }
-
-      const userId = sessionStorage.getItem("userId");
-      const socket = io(
-        "https://feiraprofissoesunisanta2024-2-backend.onrender.com",
-        { query: { userId } }
-      );
+      
+      const socket = io(BASE_API_URL, { query: { userId } });
       let tempoFase;
-      let faseCompleta = false;
-
-      socket.on("atualizarContador", (contador) => {
-        if (!faseCompleta) {
-          tempoFase = contador;
-          document.getElementById("tempo").innerText = `Tempo: ${contador}`;
-          console.log("Tempo: ", tempoFase);
-        }
+      let faseCompleta = false;  // Flag para impedir que o tempo seja atualizado após completar a fase
+  
+      socket.emit('iniciarContador');
+  
+      // Atualiza o contador com os dados do servidor
+      socket.on('atualizarContador', (contador) => {
+          if (!faseCompleta) {  // Somente atualiza se a fase ainda não foi completada
+              tempoFase = contador;
+              document.getElementById('tempo').innerText = `Tempo: ${contador}`;
+              console.log("Tempo: ", tempoFase);
+          }
       });
+  
+      // COMPLETOU A FASE
+      document.getElementById("completou").addEventListener('click', async () => {
+          const nomeColuna = 'tempo_fase2';
+          faseCompleta = true;
+  
+          // Exibe o tempo finalizado
+          document.getElementById('tempo').innerText = `Finalizou em: ${tempoFase}`;
+          
+          // Desativa o botão após ser clicado
+          let completou = document.getElementById("completou")
+          completou.disabled = true
 
-        // COMPLETOU A FASE
-        document.getElementById("completou").addEventListener('click', async () => {
-            const nomeColuna = 'tempo_fase2';
-            faseCompleta = true;
-    
-            // Exibe o tempo finalizado
-            document.getElementById('tempo').innerText = `Finalizou em: ${tempoFase}`;
-            
-            // Desativa o botão após ser clicado
-            let completou = document.getElementById("completou")
-            completou.disabled = true
+          if(completou.disabled == true){
+              completou.style.opacity = "0.5";  
+              completou.style.cursor = "default";  
+          }
 
-            if(completou.disabled == true){
-                completou.style.opacity = "0.5";  
-                completou.style.cursor = "default";  
-            }
+          try {
+              const response = await fetch(baseUrl, {
+                  method: 'PUT',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({ userId, nomeColuna, tempoFase })
+              });
 
-    
-            if (userId) {
-                const baseUrl = 'https://feiraprofissoesunisanta2024-2-backend.onrender.com/usuario';
-    
-                try {
-                    const res = await fetch(baseUrl, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ userId, nomeColuna, tempoFase })
-                    });
-    
-                    if (!res.ok) throw new Error((await res.json()).error);
-    
-                } catch (error) {
-                    console.error('Error:', error);
-                }
-            }
-        });
-
-        socket.on('faseAtual', (numeroFase) => {
-            if (numeroFase !== 4) {
-                window.location.href = `./fase${numeroFase}`;
-            }
-        })
-
-        // Redireciona para a próxima fase se o administrador mudar a fase
-        socket.on("redirecionar", (fase) => {
-            if (fase === 5) {
-                window.location.href = "./fase5";
-            } else if(fase === 3){
-                window.location.href = "./fase3";
-            }
-        });
+              if (!response.ok) {
+                  const error = await response.json();
+                  throw new Error(error.message);
+              } 
+          } catch (error) {
+              console.log(error);
+          }
+      });
+  
+      socket.on('faseAtual', (numeroFase) => {
+          if (numeroFase !== 4) {
+              console.log('Usuario na fase errada. Redirecionando...');
+              window.location.href = `./fase${numeroFase}.html`;
+          }
+      })
+  
+      socket.on('redirecionar', (fase) => {
+          console.log('Admin mudou a fase. Redirecionando...');
+          window.location.href = `./fase${fase}.html`;
+      });
     </script>
   </body>
 </html>

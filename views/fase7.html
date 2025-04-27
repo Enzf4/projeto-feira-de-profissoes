@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="../PaginaInicial/assets/logo-cavalo-branco.ico"/>
     <link rel="stylesheet" href="../styles/InterPizza.css">
     <title>Fase Pizza</title>
-    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
 </head>
 <body>
     <div id="main">
@@ -23,31 +23,29 @@
         </div>
     </div>
 
-    <script>
-        console.log("ID do usuario:", sessionStorage.getItem("userId"));
-  
-        // Verifica se o usuário está logado
-        if (sessionStorage.getItem("userId") === null) {
-          alert("Você precisa estar logado para acessar esta página.");
-          window.location.href = "./index";
-        }
-  
-        const userId = sessionStorage.getItem("userId");
-        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
-  
-        socket.on('faseAtual', (numeroFase) => {
-            if (numeroFase !== 7) {
-                window.location.href = `./fase${numeroFase}`;
-            }
-        })
-  
-        socket.on("redirecionar", (fase) => {
-          if (fase === 8) {
-            window.location.href = "./fase8";
-          } else if ( fase === 6){
-            window.location.href = "./fase6";
+    <script type="module">
+      import { BASE_API_URL } from './shared/server.js';
+
+      const userId = sessionStorage.getItem("userId");
+
+      console.log("ID do usuario:", userId);
+
+      if (userId === null) {
+        alert("Você precisa estar logado para acessar esta página.");
+        window.location.href = "./index.html";
+      }
+
+      const socket = io(BASE_API_URL, { query: { userId } });
+
+      socket.on('faseAtual', (numeroFase) => {
+          if (numeroFase !== 7) {
+              window.location.href = `./fase${numeroFase}.html`;
           }
-        });
-      </script>
+      })
+
+      socket.on("redirecionar", (fase) => {
+        window.location.href = `./fase${fase}.html`;
+      });
+    </script>
 </body>
 </html>

@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo</title>
-    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
     <style>
-        /* Adicionando estilo para espaçamento entre os botões */
         #controle-fases {
             display: flex;
             gap: 10px;
         }
 
-        /* Estilo para afastar o botão "Desligar Contador" dos demais */
         #desligarContadorBtn {
             margin-top: 20px;
             padding: 10px 20px;
@@ -31,33 +29,33 @@
 <body>
     <h1>Painel Administrativo</h1>
 
-    <!-- Div que agrupa os botões de controle de fase -->
     <div id="controle-fases">
         <button onclick="voltarFase()">Voltar</button>
         <button onclick="avancarFase()">Avançar</button>
     </div>
 
-    <!-- Botão desligar contador com espaçamento adequado -->
     <button id="desligarContadorBtn" onclick="desligarContador()">Desligar Contador</button>
 
     <p>Fase atual: <span id="faseAtualDisplay">1</span></p>
 
-    <script>
-        // Verifica se o usuário está logado como admin
+    <script type="module">
+        import { BASE_API_URL } from './shared/server.js';
+
         if (sessionStorage.getItem('isAdminLoggedIn') !== 'true') {
             alert('Você precisa estar logado como administrador para acessar esta página.');
-            window.location.href = 'login-adm';
+            window.location.href = 'login-adm.html';
         }
 
-        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com');
+        const socket = io(BASE_API_URL);
+
         let faseAtual = 1;
         const NUMERO_FASES = 11;
 
-        function atualizarNumeroFases() {
+        window.atualizarNumeroFases = function() {
             document.getElementById('faseAtualDisplay').innerHTML = `${faseAtual}`;
         }
 
-        function voltarFase() {
+        window.voltarFase = function() {
             if (faseAtual > 1) {
                 faseAtual--;
                 socket.emit('mudarFase', faseAtual);
@@ -65,7 +63,7 @@
             }
         }
 
-        function avancarFase() {
+        window.avancarFase = function() {
             if (faseAtual < NUMERO_FASES) {
                 faseAtual++;
                 socket.emit('mudarFase', faseAtual);
@@ -73,15 +71,12 @@
             }
         }
 
-        function desligarContador() {
-            // Emite evento para desligar o contador
+        window.desligarContador = function() {
             socket.emit('desligarContador');
 
-            // Reseta a fase atual para 1 e emite evento de mudança de fase
             faseAtual = 1;
             socket.emit('mudarFase', faseAtual);
 
-            // Atualiza o display para refletir a fase resetada
             atualizarNumeroFases();
         }
     </script>

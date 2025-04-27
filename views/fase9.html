@@ -9,7 +9,6 @@
 </head>
 <body>
     <div id="main">
-
         <div id="container">
             <!-- Título --> 
             <h1>Fase 5 - Iteração</h1>
@@ -22,35 +21,31 @@
 
             <p>Nessa Fase seu objetivo é escolher um melhor valor para a iteração do deslocamento do seu personagem.</p>
         </div>
-
     </div>
 
-    <script>
-        console.log("ID do usuario:", sessionStorage.getItem("userId"));
-  
-        // Verifica se o usuário está logado
-        if (sessionStorage.getItem("userId") === null) {
-          alert("Você precisa estar logado para acessar esta página.");
-          window.location.href = "./index";
-        }
-  
-        const userId = sessionStorage.getItem("userId");
-        const socket = io('https://feiraprofissoesunisanta2024-2-backend.onrender.com', { query: { userId } });
-  
-        socket.on('faseAtual', (numeroFase) => {
-            if (numeroFase !== 9) {
-                window.location.href = `./fase${numeroFase}`;
-            }
-        })
-  
-        socket.on("redirecionar", (fase) => {
-          if (fase === 10) {
-            window.location.href = "./fase10";
-          }else if (fase === 8){
-            window.location.href = "./fase8";
+    <script type="module">
+      import { BASE_API_URL } from './shared/server.js';
+
+      const userId = sessionStorage.getItem("userId");
+
+      console.log("ID do usuario:", userId);
+
+      if (userId === null) {
+        alert("Você precisa estar logado para acessar esta página.");
+        window.location.href = "./index.html";
+      }
+
+      const socket = io(BASE_API_URL, { query: { userId } });
+
+      socket.on('faseAtual', (numeroFase) => {
+          if (numeroFase !== 9) {
+              window.location.href = `./fase${numeroFase}.html`;
           }
-        });
-      </script>
-  
+      })
+
+      socket.on("redirecionar", (fase) => {
+        window.location.href = `./fase${fase}.html`;
+      });
+    </script>
 </body>
 </html>
