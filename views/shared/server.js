@@ -1,1 +1,1 @@
-export const BASE_API_URL = 'http://localhost:8383';
+export const BASE_API_URL = 'https://feiraprofissoesunisanta2024-2-backend.onrender.com';
