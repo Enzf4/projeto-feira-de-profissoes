@@ -107,12 +107,12 @@
         })
 
         socket.on('redirecionar', (fase) => {
-            console.log('Admin mudou a fase. Redirecionando...');
             if (fase == 11) {
                 window.location.href = `./Final.html`;
             } else {
                 window.location.href = `./fase${fase}.html`;
             }
+            console.log(`Admin mudou para a fase ${fase}. Redirecionando...`);
         });
     </script>
 </body>
