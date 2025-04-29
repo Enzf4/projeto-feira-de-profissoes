@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fase Iteração</title>
     <link rel="stylesheet" href="../styles/styleIteração.css">
-    <script src="../scripts/scriptIteração.js" async></script>
-    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js"></script>
+    <script src="../scripts/scriptIteração.js" defer></script> <!-- Corrigido: async -> defer -->
+    <script src="https://feiraprofissoesunisanta2024-2-backend.onrender.com/socket.io/socket.io.js" defer></script>
 </head>
 <body>
     <h1 id="tempo">0</h1>
     <h1 id="score">Pontos: 0</h1>
     <h2 id="tempojogo">0</h2>
+
     <div id="gameBoard">
         <div id="player"></div>
         <div id="targetSquare"></div>
     </div>
-        <div id="iteração">
-            <h2>Valor da Iteração:</h2>
-            <input id="inputIteração" type="number" size="2" min="0" max="50">
-        </div>
 
-    <div id="message">Tempo encerrado</div>
+    <div id="iteração">
+        <h2>Valor da Iteração:</h2>
+        <input id="inputIteração" type="number" size="2" min="0" max="50">
+    </div>
+
+    <div id="message" style="display: none;">Tempo encerrado</div>
 
     <div class="botao-container">
         <input id="start" type="button" value="Start" onclick="startTimer()">
@@ -34,7 +36,7 @@
             <span class="close" id="fecharPopup">&times;</span>
             <h2>Dica</h2><br>
             <p>Você tem 60 seg ao clicar em start</p><br>
-            <p>Utilise as setas do teclado para se movimentar</p>
+            <p>Utilize as setas do teclado para se movimentar</p>
         </div>
     </div>
     
@@ -42,7 +44,7 @@
         import { BASE_API_URL } from './shared/server.js';
 
         const userId = sessionStorage.getItem('userId');
-        console.log('ID do usuario:', userId);
+        console.log('ID do usuário:', userId);
 
         if (userId === null) {
             alert('Você precisa estar logado para acessar esta página.');
@@ -51,34 +53,30 @@
 
         const socket = io(BASE_API_URL, { query: { userId } });
         let tempoFase;
-        let faseCompleta = false;  // Flag para impedir que o tempo seja atualizado após completar a fase
+        let faseCompleta = false;
 
         socket.emit('iniciarContador');
 
-        // Atualiza o contador com os dados do servidor
         socket.on('atualizarContador', (contador) => {
-            if (!faseCompleta) {  // Somente atualiza se a fase ainda não foi completada
+            if (!faseCompleta) {
                 tempoFase = contador;
                 document.getElementById('tempo').innerText = `Tempo: ${contador}`;
                 console.log("Tempo: ", tempoFase);
             }
         });
 
-        // COMPLETOU A FASE
         document.getElementById("completou").addEventListener('click', async () => {
             const nomeColuna = 'tempo_fase5';
             faseCompleta = true;
 
-            // Exibe o tempo finalizado
             document.getElementById('tempo').innerText = `Finalizou em: ${tempoFase}`;
             
-            // Desativa o botão após ser clicado
-            let completou = document.getElementById("completou")
-            completou.disabled = true
+            let completou = document.getElementById("completou");
+            completou.disabled = true;
 
-            if(completou.disabled == true){
-                completou.style.opacity = "0.5";  
-                completou.style.cursor = "default";  
+            if (completou.disabled) {
+                completou.style.opacity = "0.5";
+                completou.style.cursor = "default";
             }
 
             try {
@@ -93,7 +91,7 @@
                 if (!response.ok) {
                     const error = await response.json();
                     throw new Error(error.message);
-                } 
+                }
             } catch (error) {
                 console.log(error);
             }
@@ -101,10 +99,10 @@
 
         socket.on('faseAtual', (numeroFase) => {
             if (numeroFase !== 10) {
-                console.log('Usuario na fase errada. Redirecionando...');
+                console.log('Usuário na fase errada. Redirecionando...');
                 window.location.href = `./fase${numeroFase}.html`;
             }
-        })
+        });
 
         socket.on('redirecionar', (fase) => {
             if (fase == 11) {
@@ -115,6 +113,48 @@
             console.log(`Admin mudou para a fase ${fase}. Redirecionando...`);
         });
     </script>
-</body>
 
+    <script>
+        function startTimer() {
+            console.log('Jogo iniciado!');
+
+            let tempoJogo = 60; // 60 segundos para jogar
+            let score = 0;
+
+            document.getElementById('message').style.display = 'none';
+
+            const intervalo = setInterval(() => {
+                tempoJogo--;
+                document.getElementById('tempojogo').innerText = `Tempo Restante: ${tempoJogo}`;
+
+                if (tempoJogo <= 0) {
+                    clearInterval(intervalo);
+                    document.getElementById('message').style.display = 'block'; // Mostrar "Tempo Encerrado"
+                }
+            }, 1000);
+
+            document.addEventListener('keydown', (event) => {
+                const player = document.getElementById('player');
+                const step = 10; // Pixels que o player anda
+                const pos = player.getBoundingClientRect();
+                const board = document.getElementById('gameBoard').getBoundingClientRect();
+
+                switch(event.key) {
+                    case "ArrowUp":
+                        if (pos.top - step > board.top) player.style.top = (player.offsetTop - step) + 'px';
+                        break;
+                    case "ArrowDown":
+                        if (pos.bottom + step < board.bottom) player.style.top = (player.offsetTop + step) + 'px';
+                        break;
+                    case "ArrowLeft":
+                        if (pos.left - step > board.left) player.style.left = (player.offsetLeft - step) + 'px';
+                        break;
+                    case "ArrowRight":
+                        if (pos.right + step < board.right) player.style.left = (player.offsetLeft + step) + 'px';
+                        break;
+                }
+            });
+        }
+    </script>
+</body>
 </html>
